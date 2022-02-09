@@ -19,6 +19,21 @@ public class Main {
 		System.out.println(anyObject1);
 		System.out.println(anyObject2);
 
+		// LAZY SINGLETON
+		// isEquals
+		AnyObject anyObject3 = LazySingleton.getLazySingleton();
+		AnyObject anyObject4 = LazySingleton.getLazySingleton();
+		isSameInstance = anyObject3.equals(anyObject4);
+		System.out.println("are anyObject3 and anyObject4 the same instance? " + isSameInstance);
+
+		// by changing one, the other changes
+		anyObject3.setName("name of 3");
+		System.out.println(anyObject4.getName());
+
+		// both references print same memory address if toString() not overridden
+		System.out.println(anyObject3);
+		System.out.println(anyObject4);
+
 	}
 
 }
