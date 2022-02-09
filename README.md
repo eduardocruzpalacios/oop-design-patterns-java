@@ -5,7 +5,7 @@ There is at least 1 example coded in Java for every of their 23 design patterns 
 
 Patterns examples are separated by packages.
 
-The classes of some patterns are divided into more packages to facilitate the comprenhension of the role each class play.
+The classes of some patterns are divided into more packages to facilitate the comprehension of the role each class play.
 
 There is 1 runnable classes for each pattern: *Main.java*.
 
