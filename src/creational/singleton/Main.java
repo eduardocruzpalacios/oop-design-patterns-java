@@ -15,9 +15,9 @@ public class Main {
 		anyObject1.setName("name of 1");
 		System.out.println(anyObject2.getName());
 
-		// both references print same memory address if toString() not overridden
-		System.out.println(anyObject1);
-		System.out.println(anyObject2);
+		// both references have the same hash code
+		System.out.println(anyObject1.hashCode());
+		System.out.println(anyObject2.hashCode());
 
 		// LAZY SINGLETON
 		// isEquals
@@ -30,9 +30,9 @@ public class Main {
 		anyObject3.setName("name of 3");
 		System.out.println(anyObject4.getName());
 
-		// both references print same memory address if toString() not overridden
-		System.out.println(anyObject3);
-		System.out.println(anyObject4);
+		// both references have the same hash code
+		System.out.println(anyObject3.hashCode());
+		System.out.println(anyObject4.hashCode());
 
 	}
 
