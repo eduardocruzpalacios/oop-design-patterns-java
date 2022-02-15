@@ -36,3 +36,12 @@ There is a class called *AnyObject* that is repeated along packages despite DRY 
 21) **Strategy** allows one of a family of algorithms to be selected on-the-fly at runtime.
 22) **Template** method defines the skeleton of an algorithm as an abstract class, allowing its subclasses to provide concrete behavior.
 23) **Visitor** separates an algorithm from an object structure by moving the hierarchy of methods into one object.
+
+## Examples by pattern
+|Pattern|Example|
+|----------------|-------------------------------|
+|Singleton (*Early* and *Lazy* variants)|AnyObject.java which could be any object.|
+|Prototype|AnyObject.java which could be any object.|
+|Builder|First, there are a hierarchy of model classes under abstract Product class, a class acting as a dynamic data structure for Product instances, and the steps for ProductBuilder interface. Second, there is a different implementation of this interface for every single Builder. Third, Cashier class acts as the director that uses the builders to manage an Order class.|
+|Factory method|Car factory that creates children classes of Car class (SuvCar or TourismCar) depending on 1 parameter|
+|Abstract factory|FactoryCreator that creates children classes of AbstractFactory class (LivingRoomFurnitureFactory or OfficeFurnitureFactory) depending on 1 parameter. Both factories create related classes implementing Table and Chair interfaces, so that LivingRoomFurnitureFactory only creates LivingRoomTable and LivingRoomChair while OfficeFurnitureFactory only creates OfficeTable and OfficeChair.|
