@@ -42,6 +42,6 @@ There is a class called *AnyObject* that is repeated along packages despite DRY 
 |----------------|-------------------------------|
 |Singleton (*Early* and *Lazy* variants)|AnyObject.java which could be any object.|
 |Prototype|AnyObject.java which could be any object.|
-|Builder|First, there are a hierarchy of model classes under abstract Product class, a class acting as a dynamic data structure for Product instances, and the steps for ProductBuilder interface. Second, there is a different implementation of this interface for every single Builder. Third, Cashier class acts as the director that uses the builders to manage an Order class.|
+|Builder|First, there are a hierarchy of model classes under abstract Product class and the Order class having a dynamic data structure for Product instances. Second, the builder steps are defined in ProductBuilder interface which is implemented by builder classes. Third, Cashier class acts as the director that uses the builders to manage an Order class.|
 |Factory method|Car factory that creates children classes of Car class (SuvCar or TourismCar) depending on 1 parameter|
 |Abstract factory|FactoryCreator that creates children classes of AbstractFactory class (LivingRoomFurnitureFactory or OfficeFurnitureFactory) depending on 1 parameter. Both factories create related classes implementing Table and Chair interfaces, so that LivingRoomFurnitureFactory only creates LivingRoomTable and LivingRoomChair while OfficeFurnitureFactory only creates OfficeTable and OfficeChair.|
