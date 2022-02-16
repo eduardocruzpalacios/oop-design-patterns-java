@@ -1,6 +1,6 @@
 package behavioral.chainofresponsibility;
 
-import behavioral.chainofresponsibility.client.ChainOfResponsability;
+import behavioral.chainofresponsibility.client.ChainOfResponsibility;
 import behavioral.chainofresponsibility.handlers.Grant;
 
 public class Main {
@@ -8,7 +8,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		// build chain which return Grant1 instance
-		Grant chainGrant = ChainOfResponsability.doChaining();
+		Grant chainGrant = ChainOfResponsibility.doChaining();
 
 		// chain receives a request (getGranInfo()) and what must be handled (int)
 

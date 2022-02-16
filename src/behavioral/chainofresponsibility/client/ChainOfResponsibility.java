@@ -5,7 +5,7 @@ import behavioral.chainofresponsibility.handlers.Grant1;
 import behavioral.chainofresponsibility.handlers.Grant2;
 import behavioral.chainofresponsibility.handlers.Grant3;
 
-public class ChainOfResponsability {
+public class ChainOfResponsibility {
 
 	public static Grant doChaining() {
 		Grant grant1 = new Grant1(Grant.USER);
