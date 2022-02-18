@@ -30,6 +30,15 @@ public class Main {
 		System.out.println("\n***** 3rd asking for grants\n");
 		chainGrant.getGrantInfo(3);
 
+		/*
+		 * in case a new handler is added, the maintainer must do the following:
+		 * 
+		 * - Create the class in model-intended package, extending Grant abstract class
+		 * and implementing the abstract methods reserved for concrete handlers
+		 * 
+		 * - update client adding the new handler to the chain
+		 */
+
 	}
 
 }
