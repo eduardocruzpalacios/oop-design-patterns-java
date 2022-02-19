@@ -96,6 +96,24 @@ public class Main {
 			System.out.println(iterator.next());
 		}
 
+		/*
+		 * in case a new iterable collection is added, the maintainer must do the
+		 * following:
+		 * 
+		 * - Create the intended-collection class in iterables package. By implementing
+		 * Iterable interface, the override method must return a new instance of the
+		 * class below (implementing Iterator interface) receiving the own instance (see
+		 * SingleLinkedList override method as an example)
+		 * 
+		 * - Create the corresponding iterator class, which must implement Iterator
+		 * interface
+		 * 
+		 * Once it has been done, the client could loop an iterator for this new
+		 * collection (obtained from the new intended-collection class after having
+		 * implemented Iterable interface), as the iterator would have hasNext and next
+		 * methods
+		 */
+
 	}
 
 }
