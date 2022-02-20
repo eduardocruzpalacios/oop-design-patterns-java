@@ -35,6 +35,12 @@ public class Main {
 		System.out.println();
 		boardGamePlayAlgorithm.meetUp(true, true, true);
 
+		/*
+		 * in case a new BoardGamePlayAlgorithm is needed, the maintainer must:
+		 * 
+		 * - create the class in the templated package, extending BoardGamePlayAlgorithm
+		 * class and override its abstract methods
+		 */
 	}
 
 }
