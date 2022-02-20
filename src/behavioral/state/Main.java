@@ -26,6 +26,17 @@ public class Main {
 		StateController.turnOffCar(car);
 		car.stop();
 
+		/*
+		 * in case new states states are needed, the maintainer must do:
+		 * 
+		 * - create the concrete state class in states packages
+		 * 
+		 * - the concrete state class implements the State interface
+		 * 
+		 * - the StateController have the new State as property, and a method that
+		 * receives the context and changes its state to the new one
+		 */
+
 	}
 
 }
