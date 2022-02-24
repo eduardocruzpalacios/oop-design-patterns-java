@@ -2,8 +2,8 @@ package behavioral.command.receiver;
 
 import behavioral.command.commands.Command;
 import behavioral.command.commands.CopyCommand;
-import behavioral.command.sender.Button;
-import behavioral.command.sender.ShortCut;
+import behavioral.command.senders.Button;
+import behavioral.command.senders.ShortCut;
 
 public class Gui {
 
