@@ -35,6 +35,17 @@ public class Main {
 		System.out.println("OUTPUT -> " + expression);
 		System.err.println(dateContext.getExpression());
 
+		/*
+		 * in case a new concrete expression is needed, the maintainer must:
+		 * 
+		 * - create the concrete expression in expression package, making it to inherit
+		 * Expression abstract class and implement its abstract methods
+		 * 
+		 * the expression would be fully operative only with that change, this example
+		 * includes a parser which is not part of the Interpreter pattern. The parser is
+		 * expendable by putting the code of its static method in Main.java
+		 */
+
 	}
 
 }
