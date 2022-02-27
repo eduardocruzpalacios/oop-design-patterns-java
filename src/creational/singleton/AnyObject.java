@@ -21,7 +21,7 @@ public class AnyObject {
 
 	@Override
 	public String toString() {
-		return "AnyObject [name=" + name + "]";
+		return "State [name=" + name + "]";
 	}
 
 }
