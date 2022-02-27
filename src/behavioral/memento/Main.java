@@ -48,6 +48,19 @@ public class Main {
 		 * Memento interface)
 		 */
 
+		/*
+		 * in case a new Memento is needed the maintainer must:
+		 * 
+		 * - create a class for the new state representation in caretaker package
+		 * implementing Memento interface
+		 * 
+		 * - create a class for the new originator in orignators package implementing
+		 * Originator interface
+		 * 
+		 * the History class is already prepared to work with classes implementing the
+		 * Memento interface, so more changes are needed
+		 */
+
 	}
 
 }
