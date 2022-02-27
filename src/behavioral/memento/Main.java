@@ -9,7 +9,7 @@ public class Main {
 
 		// client holds an editor and a history
 		Editor editor = new Editor();
-		History history = new History();
+		History<Integer> history = new History<Integer>();
 
 		// The event in charge of saving the current state is triggered 3 times
 		editor.setState(1);
@@ -39,14 +39,6 @@ public class Main {
 
 		editor.restore(history.get(2));
 		System.out.println("editor restored to 3rd saved State: " + editor.getState());
-
-		/*
-		 * future improvement:
-		 * 
-		 * - make state representation to be more abstract by means of generics of
-		 * Object class instead of being represented by only an int primitive value (see
-		 * Memento interface)
-		 */
 
 		/*
 		 * in case a new concrete memento is needed the maintainer must:

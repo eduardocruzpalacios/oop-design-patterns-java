@@ -5,15 +5,15 @@ import java.util.List;
 
 import behavioral.memento.mementos.Memento;
 
-public class History {
+public class History<T> {
 
-	private List<Memento> mementoList = new ArrayList<Memento>();
+	private List<Memento<T>> mementoList = new ArrayList<Memento<T>>();
 
-	public void add(Memento memento) {
+	public void add(Memento<T> memento) {
 		this.mementoList.add(memento);
 	}
 
-	public Memento get(int index) {
+	public Memento<T> get(int index) {
 		return this.mementoList.get(index);
 	}
 
