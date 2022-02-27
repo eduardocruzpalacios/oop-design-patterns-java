@@ -1,7 +1,7 @@
 package behavioral.memento;
 
 import behavioral.memento.caretaker.History;
-import behavioral.memento.originator.Editor;
+import behavioral.memento.originators.Editor;
 
 public class Main {
 
@@ -49,16 +49,16 @@ public class Main {
 		 */
 
 		/*
-		 * in case a new Memento is needed the maintainer must:
+		 * in case a new concrete memento is needed the maintainer must:
 		 * 
-		 * - create a class for the new state representation in caretaker package
+		 * - create a class for the new concrete memento in mementos package
 		 * implementing Memento interface
 		 * 
-		 * - create a class for the new originator in orignators package implementing
-		 * Originator interface
+		 * - create a class for the new concrete originator in orignators package
+		 * implementing Originator interface
 		 * 
 		 * the History class is already prepared to work with classes implementing the
-		 * Memento interface, so more changes are needed
+		 * Memento interface, so no more changes are needed
 		 */
 
 	}

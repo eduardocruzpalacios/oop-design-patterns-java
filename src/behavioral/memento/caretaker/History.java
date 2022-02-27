@@ -3,6 +3,8 @@ package behavioral.memento.caretaker;
 import java.util.ArrayList;
 import java.util.List;
 
+import behavioral.memento.mementos.Memento;
+
 public class History {
 
 	private List<Memento> mementoList = new ArrayList<Memento>();
