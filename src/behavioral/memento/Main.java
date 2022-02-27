@@ -40,6 +40,14 @@ public class Main {
 		editor.restore(history.get(2));
 		System.out.println("editor restored to 3rd saved State: " + editor.getState());
 
+		/*
+		 * future improvement:
+		 * 
+		 * - make state representation to be more abstract by means of generics of
+		 * Object class instead of being represented by only an int primitive value (see
+		 * Memento interface)
+		 */
+
 	}
 
 }
