@@ -29,6 +29,19 @@ class Main {
 		// observable changes its state again and the subscribers are notified
 		observable.setState(4);
 
+		/*
+		 * Observable abstract class is prepared to bestow all the logic needed for
+		 * creating observables. In case a new one is needed the maintainer must:
+		 * 
+		 * - decide which Object is needed for the state
+		 * 
+		 * - create a new concrete observable making it to inherit Observable abstract
+		 * class and having as argument the state-intended Object above
+		 * 
+		 * - create one concrete observer that implement observable Interface and takes
+		 * as argument the state-intended Object above
+		 */
+
 	}
 
 }
