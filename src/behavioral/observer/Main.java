@@ -1,5 +1,10 @@
 package behavioral.observer;
 
+import behavioral.observer.observables.ConcreteObservable;
+import behavioral.observer.observables.Observable;
+import behavioral.observer.observers.ConcreteObserver;
+import behavioral.observer.observers.Observer;
+
 class Main {
 
 	public static void main(String[] args) {
