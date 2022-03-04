@@ -52,6 +52,13 @@ public class Main {
 		 * Doing so, this could work with current concrete participants
 		 */
 
+		/*
+		 * Note to improve:
+		 * 
+		 * - the linking of concrete participant and concrete mediator could be done in
+		 * the initialization of the former
+		 */
+
 	}
 
 }
