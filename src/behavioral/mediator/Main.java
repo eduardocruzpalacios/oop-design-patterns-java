@@ -40,6 +40,18 @@ public class Main {
 		Message message3 = new Message("Boooo", user3, LocalDate.now());
 		chatRoom.notifyAll(message3);
 
+		/*
+		 * in case a new concrete participant is needed, the maintainer must:
+		 * 
+		 * - create the class in participants package implementing Participant
+		 * interface. Doing so, current concrete mediator could work with it
+		 * 
+		 * in case a new concrete mediator is needed, the maintainer must:
+		 * 
+		 * - create the class in mediators package implementing Mediator interface.
+		 * Doing so, this could work with current concrete participants
+		 */
+
 	}
 
 }
