@@ -27,18 +27,18 @@ public class Main {
 
 		// a message is sent to the 3 participants in the chat room
 		Message message1 = new Message("Hi all!", user1, LocalDate.now());
-		chatRoom.notifyAll(message1);
+		user1.operateAll(message1);
 
 		// a message is sent to one participant in the chat room
 		Message message2 = new Message("Hi all!", user2, LocalDate.now());
-		chatRoom.notifyOne(message2, user3);
+		user2.operateOne(message2, user3);
 
 		// an user exits the chat room
 		chatRoom.unlink(user1);
 
 		// a message is sent to the 2 participants in the chat room
 		Message message3 = new Message("Boooo", user3, LocalDate.now());
-		chatRoom.notifyAll(message3);
+		user3.operateAll(message3);
 
 		/*
 		 * in case a new concrete participant is needed, the maintainer must:
