@@ -21,7 +21,7 @@ public class AnyObject implements Prototype {
 
 	@Override
 	public String toString() {
-		return "AnyObject [quantity=" + quantity + "]";
+		return "State [quantity=" + quantity + "]";
 	}
 
 	// prototype constructor
