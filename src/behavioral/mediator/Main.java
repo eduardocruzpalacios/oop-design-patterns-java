@@ -1,6 +1,6 @@
 package behavioral.mediator;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import behavioral.mediator.mediators.ChatRoom;
 import behavioral.mediator.mediators.Mediator;
@@ -24,11 +24,11 @@ public class Main {
 		Participant user3 = new ChatUser(chatRoom, "Xavier", 2);
 
 		// a message is sent to the 3 participants in the chat room
-		Message message1 = new Message("Hi all!", user1, LocalDate.now());
+		Message message1 = new Message("Hi all!", user1, LocalDateTime.now());
 		user1.operateAll(message1);
 
 		// a message is sent to one participant in the chat room
-		Message message2 = new Message("Hi all!", user2, LocalDate.now());
+		Message message2 = new Message("Hi all!", user2, LocalDateTime.now());
 		user2.operateOne(message2, user3);
 
 		/*
@@ -38,7 +38,7 @@ public class Main {
 		user1.disconnect();
 
 		// a message is sent to the 2 left participants in the chat room
-		Message message3 = new Message("Boooo", user3, LocalDate.now());
+		Message message3 = new Message("Boooo", user3, LocalDateTime.now());
 		user3.operateAll(message3);
 
 		/*

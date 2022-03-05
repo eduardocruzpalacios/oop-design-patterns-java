@@ -1,6 +1,6 @@
 package behavioral.mediator.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import behavioral.mediator.participants.Participant;
 
@@ -8,15 +8,15 @@ public class Message {
 
 	private String value;
 	private Participant participant;
-	private LocalDate localDate;
+	private LocalDateTime localDateTime;
 
 	public Message() {
 	}
 
-	public Message(String value, Participant participant, LocalDate localDate) {
+	public Message(String value, Participant participant, LocalDateTime localDateTime) {
 		this.value = value;
 		this.participant = participant;
-		this.localDate = localDate;
+		this.localDateTime = localDateTime;
 	}
 
 	public String getValue() {
@@ -27,12 +27,12 @@ public class Message {
 		this.value = value;
 	}
 
-	public LocalDate getLocalDate() {
-		return localDate;
+	public LocalDateTime getLocalDateTime() {
+		return localDateTime;
 	}
 
-	public void setLocalDate(LocalDate localDate) {
-		this.localDate = localDate;
+	public void setLocalDateTime(LocalDateTime localDateTime) {
+		this.localDateTime = localDateTime;
 	}
 
 	public Participant getParticipant() {
@@ -45,7 +45,7 @@ public class Message {
 
 	@Override
 	public String toString() {
-		return "Message [value=" + value + ", participant=" + participant + ", localDate=" + localDate + "]";
+		return "Message [value=" + value + ", participant=" + participant + ", localDateTime=" + localDateTime + "]";
 	}
 
 }
