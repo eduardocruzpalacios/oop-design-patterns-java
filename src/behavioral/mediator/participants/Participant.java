@@ -10,4 +10,6 @@ public interface Participant {
 
 	public void operateAll(Message message);
 
+	public void disconnect();
+
 }

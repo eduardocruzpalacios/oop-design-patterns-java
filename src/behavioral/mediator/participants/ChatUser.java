@@ -16,6 +16,7 @@ public class ChatUser implements Participant {
 		this.mediator = mediator;
 		this.name = name;
 		this.id = id;
+		this.mediator.link(this);
 	}
 
 	public Mediator getMediator() {
@@ -56,6 +57,11 @@ public class ChatUser implements Participant {
 	@Override
 	public void operateAll(Message message) {
 		this.mediator.notifyAll(message);
+	}
+
+	@Override
+	public void disconnect() {
+		this.mediator.unlink(this);
 	}
 
 }
