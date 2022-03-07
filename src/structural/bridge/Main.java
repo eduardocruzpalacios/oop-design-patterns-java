@@ -52,6 +52,16 @@ public class Main {
 		((SecurityFeature) domoticHouseControl).executeSafed("close", "door", "2022");
 		System.out.println(door);
 
+		/*
+		 * notes for future improvement:
+		 * 
+		 * - make different interfaces for different kinds of devices: lights, sound,
+		 * cook, etc. And make the abstraction capable of controlling all of them
+		 * 
+		 * - make methods more descriptive, such as open or close for the door, instead
+		 * of passing a magic String as argument
+		 */
+
 	}
 
 }
