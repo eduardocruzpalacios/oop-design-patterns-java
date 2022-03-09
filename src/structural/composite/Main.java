@@ -27,6 +27,11 @@ public class Main {
 		 */
 		compositeShape.draw();
 
+		/*
+		 * in case a new leaf is needed, the maintainer must create the class in leafs
+		 * package making it to implement Shape interface
+		 */
+
 	}
 
 }
