@@ -21,6 +21,14 @@ public class Main {
 		cleaningDecorator = new HotWaterWithSoap(cleaning);
 		System.out.println("cost of cleaning with hot water and soap: " + cleaningDecorator.getCost());
 
+		/*
+		 * in case a new concrete decorator is needed, the maintainer must:
+		 * 
+		 * - create it in concretedecorators package with a constructor using the field
+		 * of its superclass, and overriding its superclass method, which is the method
+		 * implemented from the component
+		 */
+
 	}
 
 }
