@@ -27,6 +27,11 @@ public class Main {
 		 * - create it in concretedecorators package with a constructor using the field
 		 * of its superclass, and overriding its superclass method, which is the method
 		 * implemented from the component
+		 * 
+		 * in case a new concrete component is needed, the maintainer must:
+		 * 
+		 * - create it in concretecomponents package implementing the method from the
+		 * component
 		 */
 
 	}
