@@ -1,6 +1,7 @@
 package structural.decorator;
 
 import structural.decorator.component.Cleaning;
+import structural.decorator.concretecomponents.BikeCleaning;
 import structural.decorator.concretecomponents.CarCleaning;
 import structural.decorator.concretedecorators.HotWater;
 import structural.decorator.concretedecorators.HotWaterWithSoap;
@@ -10,16 +11,27 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		// initialize component
-		Cleaning cleaning = new CarCleaning();
-		System.out.println("cost of cleaning: " + cleaning.getCost());
+		// initialize components
+
+		Cleaning carCleaning = new CarCleaning();
+		System.out.println("cost of cleaning a car: " + carCleaning.getCost());
+
+		Cleaning bikeCleaning = new BikeCleaning();
+		System.out.println("cost of cleaning a bike: " + bikeCleaning.getCost());
 
 		// initialize concrete decorators and call method implemented from the component
-		CleaningDecorator cleaningDecorator = new HotWater(cleaning);
-		System.out.println("cost of cleaning with hot water: " + cleaningDecorator.getCost());
 
-		cleaningDecorator = new HotWaterWithSoap(cleaning);
-		System.out.println("cost of cleaning with hot water and soap: " + cleaningDecorator.getCost());
+		CleaningDecorator carCleaningDecorator = new HotWater(carCleaning);
+		System.out.println("cost of cleaning a car with hot water: " + carCleaningDecorator.getCost());
+
+		CleaningDecorator bikeCleaningDecorator = new HotWater(bikeCleaning);
+		System.out.println("cost of cleaning a bike with hot water: " + bikeCleaningDecorator.getCost());
+
+		carCleaningDecorator = new HotWaterWithSoap(carCleaning);
+		System.out.println("cost of cleaning a car with hot water and soap: " + carCleaningDecorator.getCost());
+
+		bikeCleaningDecorator = new HotWaterWithSoap(bikeCleaning);
+		System.out.println("cost of cleaning a bike with hot water and soap: " + bikeCleaningDecorator.getCost());
 
 		/*
 		 * in case a new concrete decorator is needed, the maintainer must:
