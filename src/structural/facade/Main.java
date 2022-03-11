@@ -32,6 +32,16 @@ public class Main {
 		ArrayList<Double> exponentialEncrypted = arrayEncrypFacade.encrypt(arrayList, "exponential");
 		System.out.println(exponentialEncrypted);
 
+		/*
+		 * in case a new part of the subsystem is needed to use, the maintainer must:
+		 * 
+		 * - create the class in the subsystem package implementing the ArrayEncrypt
+		 * interface
+		 * 
+		 * - modify the ArrayEncrypFacade by adding a new case in the switch which must
+		 * call the encryp method of the class recently created
+		 */
+
 	}
 
 }
