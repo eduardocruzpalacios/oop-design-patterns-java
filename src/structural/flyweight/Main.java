@@ -44,6 +44,11 @@ public class Main {
 		 * and unrender methods
 		 */
 
+		/*
+		 * in case the repetitive or unique states need to be modified, the maintainer
+		 * only have to modify flyweight or context classes respectively
+		 */
+
 	}
 
 }
