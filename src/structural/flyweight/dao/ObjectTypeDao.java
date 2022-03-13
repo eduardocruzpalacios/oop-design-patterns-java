@@ -10,7 +10,6 @@ public class ObjectTypeDao {
 	private static Map<String, ObjectType> objects;
 
 	private static void loadObject() {
-		// let's suppose we are getting our flyweights from a ddbb
 		objects = new HashMap<String, ObjectType>();
 		ObjectType objectType = new ObjectType("Cheap chair", "cheap_chair.gif", 45);
 		objects.put(objectType.getName(), objectType);
