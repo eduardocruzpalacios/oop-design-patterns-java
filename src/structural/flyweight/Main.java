@@ -46,7 +46,7 @@ public class Main {
 
 		/*
 		 * in case the repetitive or unique states need to be modified, the maintainer
-		 * only have to modify flyweight or context classes respectively
+		 * only has to modify flyweight or context classes respectively
 		 */
 
 	}
