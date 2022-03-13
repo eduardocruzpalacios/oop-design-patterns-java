@@ -12,12 +12,41 @@ There is 1 runnable classes for each pattern: *Main.java*. Comments in this clas
 
 There is a class called *AnyObject* that is repeated along packages despite DRY (Don't Repeat Yourself) programming principle so as to facilitate the comprehension of a given pattern by the only means of the code belonging to its package.
 ## Design Patterns
-## Creational patterns
-1) **Singleton** (*Early* and *Lazy* variants) restricts object creation for a class to only one instance.
-2) **Prototype** creates objects by cloning an existing object.
-3) **Builder** constructs complex objects by separating construction and representation.
-4) **Factory method** creates objects without specifying the exact class to create.
-5) **Abstract factory** groups object factories that have a common theme.
+### Creational patterns
+#### Singleton
+**Singleton** restricts object creation for a class to only one instance.
+
+There are *Early* and *Lazy* variants.
+
+AnyObject class could be any object.
+#### Prototype
+**Prototype** creates objects by cloning an existing object.
+
+Prototype interface has a method that makes its implementations to return a Prototype instance.
+
+AnyObject class could be any object and implements the Prototype interface. It has a constructor that uses another instance of the same class and uses its properties values to create a new object with this data. The method implemented return the former constructor passing it the own instance.
+#### Builder
+**Builder** constructs complex objects by separating construction and representation.
+
+There is a hierarchy of model classes under abstract Product class.
+
+The Order class has a dynamic data structure for Product instances.
+
+The builder steps are defined in ProductBuilder interface which is implemented by builder classes.
+
+Cashier class acts as the director by using the builders to manage an Order class.
+#### Factory method
+**Factory method** creates objects without specifying the exact class to create.
+
+Car factory creates children classes of Car class (SuvCar or TourismCar). The specific child returned depends on 1 parameter this factory receives.
+#### Abstract factory
+**Abstract factory** groups object factories that have a common theme.
+
+FactoryCreator has a static method to create children classes of AbstractFactory class (LivingRoomFurnitureFactory or OfficeFurnitureFactory). The concrete factory returned depends on 1 parameter the FactoryCreator static method receives.
+
+Both factories create related classes implementing Table and Chair interfaces, so that:
+- LivingRoomFurnitureFactory creates LivingRoomTable and LivingRoomChair.
+- OfficeFurnitureFactory creates OfficeTable and OfficeChair.
 ## Structural patterns
 6) **Adapter** allows classes with incompatible interfaces to work together by wrapping its own interface around that of an already existing class.
 7) **Bridge** decouples an abstraction from its implementation so that the two can vary independently.
@@ -42,11 +71,7 @@ There is a class called *AnyObject* that is repeated along packages despite DRY 
 ## Examples by pattern
 |Pattern|Example|
 |----------------|-------------------------------|
-|Singleton (*Early* and *Lazy* variants)|AnyObject class which could be any object.|
-|Prototype|AnyObject class which could be any object.|
-|Builder|First, there are a hierarchy of model classes under abstract Product class and the Order class having a dynamic data structure for Product instances. Second, the builder steps are defined in ProductBuilder interface which is implemented by builder classes. Third, Cashier class acts as the director that uses the builders to manage an Order class.|
-|Factory method|Car factory that creates children classes of Car class (SuvCar or TourismCar) depending on 1 parameter|
-|Abstract factory|FactoryCreator that creates children classes of AbstractFactory class (LivingRoomFurnitureFactory or OfficeFurnitureFactory) depending on 1 parameter. Both factories create related classes implementing Table and Chair interfaces, so that LivingRoomFurnitureFactory only creates LivingRoomTable and LivingRoomChair while OfficeFurnitureFactory only creates OfficeTable and OfficeChair.|
+
 |Chain of Responsibility|Grant abstract class represents the Handler. Their children are the concrete handlers in charge of processing a given int (the level of grant) to print the allowed actions for the corresponding role. ChainOfResponsibility class holds the static method that build the chain and return the first handler that have to handle the request.|
 |Visitor|A supermarket cashier is the visitor. Products of the same supermarket are the visitable objects. The visitor implements a different algorithm for calculating the price of each product. The client uses the cashier to loop for a group of products, visit them, and return the total cost.|
 |Iterator|The collection is a Single Linked List, which implements Iterable interface to get an Iterator for the own instance. The Iterator interface has hasNext and next methods. In the Main class the functionality of both the Single Linked List and Iterator behavioral pattern is tested.|
