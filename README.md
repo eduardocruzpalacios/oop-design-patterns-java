@@ -1,8 +1,9 @@
-# Object-oriented programming (OOP) Design Patterns examples with Java
-The patterns of this repository refer to those of the **Gang of Four (GoF)**, who are the 4 authors (**Erich Gamma**, **Richard Helm**, **Ralph Johnson**, and **John Vlissides**) of the software engineering book *Design Patterns: Elements of Reusable Object-Oriented Software* published in 1994.
+# Object-Oriented Programming (OOP) Design Patterns examples with Java
+## Scope
+The design patterns of this repository refer to those of the **Gang of Four (GoF)**, who are the 4 authors (**Erich Gamma**, **Richard Helm**, **Ralph Johnson**, and **John Vlissides**) of the software engineering book *Design Patterns: Elements of Reusable Object-Oriented Software* first published in 1994.
 
-There is at least 1 example coded in Java for every of their 23 design patterns for Object-oriented programming.
-
+There is 1 example coded in Java for every single of their 23 design patterns for Object-oriented programming.
+## Repository Organization
 Patterns examples are separated by packages.
 
 The classes of some patterns are divided into more packages to facilitate the comprehension of the role each class play.
@@ -10,6 +11,7 @@ The classes of some patterns are divided into more packages to facilitate the co
 There is 1 runnable classes for each pattern: *Main.java*. Comments in this class are intended to clarify even more the example as well as explaining how to maintain the code.
 
 There is a class called *AnyObject* that is repeated along packages despite DRY (Don't Repeat Yourself) programming principle so as to facilitate the comprehension of a given pattern by the only means of the code belonging to its package.
+## Design Patterns
 ## Creational patterns
 1) **Singleton** (*Early* and *Lazy* variants) restricts object creation for a class to only one instance.
 2) **Prototype** creates objects by cloning an existing object.
