@@ -6,7 +6,7 @@ There is 1 example coded in Java for every single of their 23 design patterns fo
 ## Repository Organization
 Patterns examples are separated by packages.
 
-The classes of some patterns are divided into more packages to facilitate the comprehension of the role each class play.
+The classes of some patterns are divided into packages named according to a terminology that facilitates the comprehension of the role each class plays in the corresponding pattern.
 
 There is 1 runnable classes for each pattern: *Main.java*. Comments in this class are intended to clarify even more the example as well as explaining how to maintain the code.
 
