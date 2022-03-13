@@ -47,14 +47,73 @@ FactoryCreator has a static method to create children classes of AbstractFactory
 Both factories create related classes implementing Table and Chair interfaces, so that:
 - LivingRoomFurnitureFactory creates LivingRoomTable and LivingRoomChair.
 - OfficeFurnitureFactory creates OfficeTable and OfficeChair.
-## Structural patterns
-6) **Adapter** allows classes with incompatible interfaces to work together by wrapping its own interface around that of an already existing class.
-7) **Bridge** decouples an abstraction from its implementation so that the two can vary independently.
-8) **Composite** composes zero-or-more similar objects so that they can be manipulated as one object.
-9) **Decorator** dynamically adds/overrides behaviour in an existing method of an object.
-10) **Facade** provides a simplified interface to a large body of code.
-11) **Flyweight** reduces the cost of creating and manipulating a large number of similar objects.
-12) **Proxy** provides a placeholder for another object to control access, reduce cost, and reduce complexity.
+### Structural patterns
+#### Adapter
+**Adapter** allows classes with incompatible interfaces to work together by wrapping its own interface around that of an already existing class.
+
+Adaptee is Product class, which has ean, name and price as properties.
+
+Target interface is Stock, which forces to implement getStockedLocalDateTime method returning a LocalDateTime.
+
+Adapter is StockProduct which extends Product class and implements Stock interface.
+#### Bridge
+**Bridge** decouples an abstraction from its implementation so that the two can vary independently.
+
+The implementation-intended class is Device.java.
+
+The concrete implementations are Door and Fridge classes.
+
+The abstraction is DomoticHouseControl class.
+
+The refined abstraction is SecurityFeature class, whose methods have a high control logic of the implementations it can deal with.
+#### Composite
+**Composite** composes zero-or-more similar objects so that they can be manipulated as one object.
+
+The component-intended interface is Shape.java which holds the method draw.
+
+The leafs implementing it are Circle and Square classes.
+
+The composite is CompositeShape class, which has a data structure to store leafs and implements the Shape interface by looping all its leafs stored and calling the draw method implementation from each one.
+#### Decorator
+**Decorator** dynamically adds/overrides behavior in an existing method of an object.
+
+The component-intended interface is Cleaning.java.
+
+Concrete components classes implementing it are BikeCleaning and CarCleaning.
+
+The decorator is the abstract CleaningDecorator class which has a reference to a component-intended instance and implements the Cleaning interface by calling the implemented method of its component-typed property.
+
+Concrete decorators extend the decorator and override the implemented method of it superclass and modify what it does.
+#### Facade
+**Facade** provides a simplified interface to a large body of code.
+
+The subsystem consists of ArrayEncrypt interface and its implementations: ArithmeticEncrypt and ExponentialEncrypt classes.
+
+The Facade-intended class is ArrayEncryptFacade.java. It receives a data structure and a String. Depending on the value of this String, a concrete implementation of the subsystem is called and uses the data structure.
+#### Flyweight
+**Flyweight** reduces the cost of creating and manipulating a large number of similar objects.
+
+Flyweight is ObjectType.
+
+Flyweight factory is ObjectFactory, and returns a ObjectType from a HashMap of them that acts as an object pool.
+
+There is a DAO-intended class named ObjectTypeDao.
+
+ObjectStatus class is a data model.
+
+Context is Object and has references to a ObjectStatus and a Flyweight objects.
+
+Client is ConcreteRenderedMap. It has a HashMap to store context instances. Its key is a static int that increments after a new context instances is put.
+#### Proxy
+**Proxy** provides a placeholder for another object to control access, reduce cost, and reduce complexity.
+
+HttpRequest and Webpage classes are model-intended classes.
+
+The service for which a proxy is created is HttpServiceImpl class, from which HttpService interface has been extracted. The service uses a HttpRequest object and returns a Webpage instance.
+
+CachedHttpServiceImpl is the proxy-intended class for HttpServiceImpl. It has a HashMap to store Webpage instances already returned using the url property of the HttpRequest object as key. First, the method implemented searches in this data structure.
+- In case no Webpage object had been cached for a given url before, the service that execute the expensive query is called and afterwards the returned Webpage instance is stored in the cache and returned by the proxy.
+- In case a Webpage object had been cached for a given url before, the service returns it.
 ## Behavioral patterns
 13) **Chain of responsibility** delegates commands to a chain of processing objects.
 14) **Command** creates objects that encapsulate actions and parameters.
@@ -83,10 +142,3 @@ Both factories create related classes implementing Table and Chair interfaces, s
 |Memento|Memento interface ensures all its implementations have a getter to get the state (represented as a generic). Originator interface ensures all its implementations have methods to save the current state by returning it and to restore its own state by using a given Memento. The History class is the caretaker and hold a list for mementos as well as methods to add a new one and retrieve them.|
 |Observer|Observable abstract class is prepared to bestow all the logic needed for creating concrete observables by inheriting it: subscribe, unsubscribe, change state and notify to observers. Observer interface make its implementations to provide a logic for update method.|
 |Mediator|Mediator interface has methods to link and unlink a Participant instance, to notify all its Participant instance, and to notify a single one. The concrete mediator is ChatRoom class that implement the former interface and storage all the references to its Participant instances in a HashMap. Participant interface has methods to get the own id, to operate to one or all other participants in the same mediator, and to disconnect from its mediator. Message is the model for what is sent and has a reference for the message itself, the sender and the date and time it was sent.|
-|Adapter|The adaptee is Product class, which has ean, name and price as properties. Target interface is Stock, which forces to implement getStockedLocalDateTime method returning a LocalDateTime. Adapter is StockProduct which extends Product class and implements Stock interface.|
-|Bridge|The implementation-intended class is Device.java. The concrete implementations are Door and Fridge classes. The abstraction is DomoticHouseControl class. The refined abstraction is SecurityFeature class, whose methods have a high control logic of the implementations it can deal with.|
-|Composite|The component-intended interface is Shape.java which holds the method draw. The leafs implementing it are Circle and Square classes. The composite is CompositeShape class, which has a data structure to store leafs and implements the Shape interface by looping all its leafs stored and calling the draw method implementation from each one.|
-|Decorator|The component-intended interface is Cleaning.java. Concrete components classes implementing it are BikeCleaning and CarCleaning. The decorator is the abstract CleaningDecorator class which has a reference to a component and implements the Cleaning interface by calling the implemented method of its component-typed property. Concrete decorators extend the decorator intended class and override the implemented method of it superclass and modify what it does.|
-|Facade|The subsystem consists of ArrayEncrypt interface, ArithmeticEncrypt and ExponentialEncrypt classes. The Facade-intended class is ArrayEncryptFacade.java.|
-|Flyweight|The flyweight class is ObjectType and its factory is ObjectType. There is a DAO-intended class named ObjectTypeDao. The context class is Object and has a reference to a ObjectStatus object as property. The client that uses this flyweight to save up memory is ConcreteRenderedMap class.|
-|Proxy|HttpRequest and Webpage classes are model-intended classes. The service for which a proxy is created is HttpServiceImpl class, from which HttpService interface has been extracted. The service uses a HttpRequest object and returns a Webpage instance. CachedHttpServiceImpl is the proxy-intended class for HttpServiceImpl. It has a HashMap to store Webpage instances already returned using the url property of the HttpRequest object as key. First, the method implemented searches in this data structure. In case no Webpage object had been cached for a given url before, the service that execute the expensive query is called and afterwards the returned Webpage instance is stored in the cache and returned by the proxy. In case a Webpage object had been cached for a given url before, the service returns it.|
