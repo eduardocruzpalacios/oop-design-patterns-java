@@ -37,6 +37,13 @@ public class Main {
 
 		concreteRenderedMap.printRendered();
 
+		/*
+		 * note for improvement:
+		 * 
+		 * - it could be use Mediator pattern to make the client actually execute render
+		 * and unrender methods
+		 */
+
 	}
 
 }
