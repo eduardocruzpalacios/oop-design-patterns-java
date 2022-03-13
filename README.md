@@ -114,31 +114,118 @@ The service for which a proxy is created is HttpServiceImpl class, from which Ht
 CachedHttpServiceImpl is the proxy-intended class for HttpServiceImpl. It has a HashMap to store Webpage instances already returned using the url property of the HttpRequest object as key. First, the method implemented searches in this data structure.
 - In case no Webpage object had been cached for a given url before, the service that execute the expensive query is called and afterwards the returned Webpage instance is stored in the cache and returned by the proxy.
 - In case a Webpage object had been cached for a given url before, the service returns it.
-## Behavioral patterns
-13) **Chain of responsibility** delegates commands to a chain of processing objects.
-14) **Command** creates objects that encapsulate actions and parameters.
-15) **Interpreter** implements a specialized language.
-16) **Iterator** accesses the elements of an object sequentially without exposing its underlying representation.
-17) **Mediator** allows loose coupling between classes by being the only class that has detailed knowledge of their methods.
-18) **Memento** provides the ability to restore an object to its previous state (undo).
-19) **Observer** is a publish/subscribe pattern, which allows a number of observer objects to see an event.
-20) **State** allows an object to alter its behavior when its internal state changes.
-21) **Strategy** allows one of a family of algorithms to be selected on-the-fly at runtime.
-22) **Template** method defines the skeleton of an algorithm as an abstract class, allowing its subclasses to provide concrete behavior.
-23) **Visitor** separates an algorithm from an object structure by moving the hierarchy of methods into one object.
+### Behavioral patterns
+#### Chain of responsibility
+**Chain of responsibility** delegates commands to a chain of processing objects.
 
-## Examples by pattern
-|Pattern|Example|
-|----------------|-------------------------------|
+Grant abstract class represents the Handler.
 
-|Chain of Responsibility|Grant abstract class represents the Handler. Their children are the concrete handlers in charge of processing a given int (the level of grant) to print the allowed actions for the corresponding role. ChainOfResponsibility class holds the static method that build the chain and return the first handler that have to handle the request.|
-|Visitor|A supermarket cashier is the visitor. Products of the same supermarket are the visitable objects. The visitor implements a different algorithm for calculating the price of each product. The client uses the cashier to loop for a group of products, visit them, and return the total cost.|
-|Iterator|The collection is a Single Linked List, which implements Iterable interface to get an Iterator for the own instance. The Iterator interface has hasNext and next methods. In the Main class the functionality of both the Single Linked List and Iterator behavioral pattern is tested.|
-|Strategy|Having Coordinate as a model class, GoStrategy interface has a method that receives 2 Coordinate objects and return the minutes taken to go from one to the another. Concrete strategies implement GoStrategy interface in a sense that each one have a different algorithm for that calculation. The Context-intended class is GPS, which has a GoStrategy as property depending on a different strategy to get that calculation.|
-|State|The context is Car class and the concrete states, which are those implementing State interface, are On and Off. There is a state controller that have a property and a method for every single concrete state. The properties are the concrete states and the methods receive the context and change its state to a concrete one.|
-|Template Method|The algorithm template with the steps defined is in BoardGamePlayAlgorithm. This template uses some methods of the super class and others override by classes extending it. The client can refer to the super class and initialize the child class due to polymorphism. The client only needs to call the public meetUp method from the instance, which executes the algorithm steps defined in the super class and those steps of the child class initialized.|
-|Command|Command is an abstract class whose children must provide a body for the execute method. Concrete command is the copy action gui by getting the selected text and setting the clipboard with its value. Senders are Button and ShortCut classes. Gui has different senders calling the same concrete command.|
-|Interpreter|DateContext contains references to a String value for an expression and other three int values for a date: day, month and year. The abstract expression, namely the abstract class DateExpression, has an abstract void method the uses a DateContext object. Concrete expressions (DayExpression, MonthExpression & YearExpression classes) inherit the DateExpression class and implement its abstract method. The DateParser is not part of the interpreter pattern, it is included to reduce the amount of code of the Main.java class, as the concrete expression can be used without it.|
-|Memento|Memento interface ensures all its implementations have a getter to get the state (represented as a generic). Originator interface ensures all its implementations have methods to save the current state by returning it and to restore its own state by using a given Memento. The History class is the caretaker and hold a list for mementos as well as methods to add a new one and retrieve them.|
-|Observer|Observable abstract class is prepared to bestow all the logic needed for creating concrete observables by inheriting it: subscribe, unsubscribe, change state and notify to observers. Observer interface make its implementations to provide a logic for update method.|
-|Mediator|Mediator interface has methods to link and unlink a Participant instance, to notify all its Participant instance, and to notify a single one. The concrete mediator is ChatRoom class that implement the former interface and storage all the references to its Participant instances in a HashMap. Participant interface has methods to get the own id, to operate to one or all other participants in the same mediator, and to disconnect from its mediator. Message is the model for what is sent and has a reference for the message itself, the sender and the date and time it was sent.|
+Their children (Grant1, Grant2 and Grant3) are the concrete handlers in charge of processing a given int (the level of grant) to print the allowed actions for the corresponding role.
+
+ChainOfResponsibility class acts as client and holds the static method that builds the chain and returns the first handler that have to handle the request.
+#### Command
+**Command** creates objects that encapsulate actions and parameters.
+
+Command is an abstract class whose children must provide a body for the execute method. It has a reference to the receiver.
+
+Concrete command is CopyCommand. It implements its abstract superclass method by specifying what happens in the receiver.
+
+Senders are Button and ShortCut classes. They have a reference to a command instance.
+
+Client is Gui and has:
+- Concrete commands using the own client instance.
+- Different senders using the same concrete command.
+- Methods that calls senders' methods that, in turn, call concrete commands' methods that actually execute the actions.
+#### Interpreter
+**Interpreter** implements a specialized language.
+
+DateContext contains references to a String value for an expression and other three int values for a date: day, month and year.
+
+Abstract expression is DateExpression and has an abstract void method the uses a DateContext object.
+
+Concrete expressions (DayExpression, MonthExpression & YearExpression classes) inherit DateExpression abstract class and implement its abstract method.
+
+DateParser is not part of the interpreter pattern. It acts as client that uses the Interpreter pattern.
+#### Iterator
+**Iterator** accesses the elements of an object sequentially without exposing its underlying representation.
+
+There are 2 interfaces:
+- Iterator with hasNext and next methods.
+- Iterable with getIterator method that returns an instance of the previous interface.
+
+The implementation of Iterable interface is SingleLinkedList:
+- It is a data structure coded for this pattern.
+- Uses Node class which acts as model.
+- Acts as collection.
+- Its implemented method returns an instance of the corresponding implementation of the other interface (SingleLinkedListIterator implementing Iterator). It receives the own instance of SingleLinkedList.
+
+The implementation of Iterator interface is SingleLinkedListIterator:
+- has a reference to the corresponding implementation of the other interface (SingleLinkedList implementing Iterable), which is needed to implement the methods of its interface.
+
+In the Main class the functionality of both the Single Linked List and Iterator behavioral pattern is tested.
+#### Mediator
+**Mediator** allows loose coupling between classes by being the only class that has detailed knowledge of their methods.
+
+Mediator interface has methods to link and unlink a Participant instance, to notify all its Participant instance, and to notify a single one.
+
+The concrete mediator is ChatRoom class,implements the former interface and storage all the references to its Participant instances in a HashMap.
+
+Participant interface has methods to get the own id, to operate to one or all other participants in the same mediator, and to disconnect from its mediator.
+
+Message is the model for what is sent and has a reference for the message value, the sender and the date and time it was sent.
+#### Memento
+**Memento** provides the ability to restore an object to its previous state (undo).
+
+Memento interface ensures all its implementations have a getter to get the state (represented as a generic). Its implementation is Snapshot class.
+
+Originator interface ensures all its implementations have methods to save the current state by returning it and to restore its own state by using a given Memento. Its implementation is Editor class.
+
+The History class is the caretaker and hold a list for mementos as well as methods to add a new one and retrieve them.
+#### Observer
+**Observer** is a publish/subscribe pattern, which allows a number of observer objects to see an event.
+
+Observable abstract class is prepared to bestow all the logic needed for creating concrete observables by inheriting it: subscribe, unsubscribe, change state and notify to observers.
+
+Observer interface make its implementations to provide a logic for update method.
+#### State
+**State** allows an object to alter its behavior when its internal state changes.
+
+State interface has init and stop methods.
+
+Concrete states are On and Off and implement methods of their interface.
+
+The context is Car class, has a reference to a State instance, a setter to change it, and methods to call the methods of the State instance.
+ 
+There is a state controller that has property and a method for every single concrete state. The properties are the concrete states and the methods receive the context and change its state to a concrete one.
+#### Strategy
+**Strategy** allows one of a family of algorithms to be selected on-the-fly at runtime.
+
+Coordinate is a model class.
+
+GoStrategy interface has a method that receives 2 Coordinate objects and return the minutes taken to go from one to the another.
+
+Concrete strategies implement GoStrategy interface in a sense that each one has a different algorithm for that calculation.
+
+The Context-intended class is GPS and has:
+- a reference to a GoStrategy instance.
+- getTime method that uses 2 Coordinate instances, call the implemented method of its GoStrategy instance passing it those 2 2 Coordinate instances.
+#### Template
+**Template** method defines the skeleton of an algorithm as an abstract class, allowing its subclasses to provide concrete behavior.
+
+The algorithm template with the steps defined is in meetUp method of the BoardGamePlayAlgorithm abstract class:
+- Uses methods already implemented in this abstract class.
+- Uses methods implemented in the templated classes (ArcadiaGamePlayAlgorithm and ParchisGamePlayAlgorithm).
+
+The client can refer to the super class and initialize any child class thanks to polymorphism. The client only needs to call the public meetUp method from the instance, which executes the algorithm steps defined in the super class and those steps of the child class initialized.
+#### Visitor
+**Visitor** separates an algorithm from an object structure by moving the hierarchy of methods into one object.
+
+There are 2 interfaces in this pattern:
+- Cashier that acts as Visitor and must has a method for every single implementation of the other interface. Each method uses each implementation.
+- Product that acts as Visitable and has a method that uses the other interface.
+
+Visitable implementations act as model/representation classes. Its implemented method must call the visitor implementation method and pass the self instance as parameter.
+
+Visitor implementation defines an algorithm for every single representation.
+
+Client uses a data structure of concrete visitables, loop them and uses a concrete visitor to execute the corresponding algorithm to every single representation.
