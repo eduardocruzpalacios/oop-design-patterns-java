@@ -6,9 +6,9 @@ There is 1 example coded in Java for every single of their 23 design patterns fo
 ## Repository Organization
 Patterns examples are separated by packages.
 
-The classes of some patterns are divided into packages named according to a terminology that facilitates the comprehension of the role each class plays in the corresponding pattern.
+Classes are divided into packages named accordingly to the GoF's book terminology to facilitate the comprehension of the role each class plays in the corresponding pattern.
 
-There is 1 runnable classes for each pattern: *Main.java*. Comments in this class are intended to clarify even more the example as well as explaining how to maintain the code.
+There is 1 runnable classes for each pattern: *Main.java*. Comments in it are intended to clarify even more the example as well as explaining how to maintain the code.
 
 There is a class called *AnyObject* that is repeated along packages despite DRY (Don't Repeat Yourself) programming principle so as to facilitate the comprehension of a given pattern by the only means of the code belonging to its package. When this class appears, it means it could be substituted by any other class. 
 ## Design Patterns
@@ -16,13 +16,16 @@ There is a class called *AnyObject* that is repeated along packages despite DRY 
 #### Singleton
 DEFINITION: Ensure a class only has one instance, and provide a global point of access to it.
 
-There are *Early* and *Lazy* variants.
+Variants: *Early instantiation* and *Lazy instantiation*.
 #### Prototype
 DEFINITION: Specify the kinds of objects to create using a prototypical instance, and create new objects by coping this prototype.
 
-Prototype interface has a method that makes its implementations to return a Prototype instance.
+Participants:
+- Prototype: MusicalNotePrototype
+- ConcretePrototype: HalfNotePrototypeDeepCopy, HalfNotePrototypeShadowCopy
+- Client: GraphicTool
 
-AnyObject class could be any object and implements the Prototype interface. It has a constructor that uses another instance of the same class and uses its properties values to create a new object with this data. The method implemented return the former constructor passing it the own instance.
+Variants: *Deep copy* and *Shadow copy* clone techniques.
 #### Builder
 DEFINITION: Separate the construction of a complex object from its representation so that the same construction process can create different representations.
 
