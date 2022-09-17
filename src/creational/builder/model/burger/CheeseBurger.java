@@ -1,4 +1,4 @@
-package creational.builder.model.burgers;
+package creational.builder.model.burger;
 
 public class CheeseBurger extends Burger {
 

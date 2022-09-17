@@ -34,13 +34,26 @@ Variants: *Deep copy* and *Shadow copy* clone techniques.
 #### Builder
 DEFINITION: Separate the construction of a complex object from its representation so that the same construction process can create different representations.
 
-There is a hierarchy of model classes under abstract Product class.
+Participants:
+- Builder: OrderBuilder
+- ConcreteBuilder: BurgerMenuBurger implements Builder
+- Director: Cashier (Builder)
+- Product: Order (Item)
+- Model:
+  - Item::getPrice
+    - Burger extends Item
+      - CheeseBurger extends Burger
+      - Veggie extends Burger
+    - Drink extends Item
+      - Water extends Drink
+      - Coke extends Drink
+    - Companion extends Item
+      - OnionRings extends Companion
+    - Dessert extends Item
+      - IceCream extends Dessert
 
-The Order class has a dynamic data structure for Product instances.
+Cashier::construct requests an OrderBuilder to build the parts of an Order object.
 
-The builder steps are defined in ProductBuilder interface which is implemented by builder classes.
-
-Cashier class acts as the director by using the builders to manage an Order class.
 #### Factory method
 DEFINITION: Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory method lets a class defer instantiation to subclasses.
 

@@ -1,4 +1,4 @@
-package creational.builder.model.drinks;
+package creational.builder.model.drink;
 
 public class Coke extends Drink {
 

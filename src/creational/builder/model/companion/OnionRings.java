@@ -1,4 +1,4 @@
-package creational.builder.model.companions;
+package creational.builder.model.companion;
 
 public class OnionRings extends Companion {
 

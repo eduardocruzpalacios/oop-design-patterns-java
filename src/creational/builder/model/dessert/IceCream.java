@@ -1,4 +1,4 @@
-package creational.builder.model.desserts;
+package creational.builder.model.dessert;
 
 public class IceCream extends Dessert {
 
