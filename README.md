@@ -25,10 +25,16 @@ Variants: *Early instantiation* and *Lazy instantiation*.
 DEFINITION: Specify the kinds of objects to create using a prototypical instance, and create new objects by coping this prototype.
 
 Participants:
-- Prototype: MusicalNotePrototype extends Graphic::getRepresentation
-- ConcretePrototype: HalfNotePrototypeDeepCopy, HalfNotePrototypeShadowCopy
-- Client: GraphicTool (Graphic)
+- Client:
+  - Graphic::getRepresentation
+  - GraphicTool (Graphic)
+- Prototype: MusicalNotePrototype extends Graphic
+- ConcretePrototype:
+  - HalfNotePrototypeDeepCopy implements MusicalNotePrototype
+  - HalfNotePrototypeShadowCopy implements MusicalNotePrototype
 - Model: Representation
+
+ConcretePrototype classes expose clone method to create a new instance of their class by cloning a prototypical instance.
 
 Variants: *Deep copy* and *Shadow copy* clone techniques.
 #### Builder
