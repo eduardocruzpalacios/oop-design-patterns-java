@@ -28,37 +28,37 @@ Participants:
 - Client:
   - Graphic::getRepresentation
   - GraphicTool (Graphic)
-- Prototype: MusicalNotePrototype extends Graphic
+- Prototype: interface MusicalNotePrototype extends Graphic
 - ConcretePrototype:
-  - HalfNotePrototypeDeepCopy implements MusicalNotePrototype
-  - HalfNotePrototypeShadowCopy implements MusicalNotePrototype
+  - HalfNotePrototypeDeepCopy
+  - HalfNotePrototypeShadowCopy
 - Model: Representation
 
-ConcretePrototype classes expose clone method to create a new instance of their class by cloning a prototypical instance.
+ConcretePrototype classes expose clone method to create a new object of their class by cloning a prototypical instance.
 
 Variants: *Deep copy* and *Shadow copy* clone techniques.
 #### Builder
 DEFINITION: Separate the construction of a complex object from its representation so that the same construction process can create different representations.
 
 Participants:
-- Builder: OrderBuilder
-- ConcreteBuilder: BurgerMenuBurger implements Builder
+- Builder: interface OrderBuilder
+- ConcreteBuilder: BurgerMenuBurger
 - Director: Cashier (Builder)
 - Product: Order (Item)
 - Model:
-  - Item::getPrice
-    - Burger extends Item
-      - CheeseBurger extends Burger
-      - Veggie extends Burger
-    - Drink extends Item
-      - Water extends Drink
-      - Coke extends Drink
-    - Companion extends Item
-      - OnionRings extends Companion
-    - Dessert extends Item
-      - IceCream extends Dessert
+  - abstract Item
+    - abstract Burger
+      - CheeseBurger
+      - Veggie
+    - abstract Drink
+      - Water
+      - Coke
+    - abstract Companion
+      - OnionRings
+    - abstract Dessert
+      - IceCream
 
-Cashier::construct requests an OrderBuilder to build the parts of an Order object.
+Cashier::construct requests its OrderBuilder member to build the parts of an Order object.
 
 #### Factory method
 DEFINITION: Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory method lets a class defer instantiation to subclasses.
