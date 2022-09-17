@@ -16,6 +16,10 @@ There is a class called *AnyObject* that is repeated along packages despite DRY 
 #### Singleton
 DEFINITION: Ensure a class only has one instance, and provide a global point of access to it.
 
+Participants:
+- Singleton: EarlySingleton (AnyObject), LazySingleton (AnyObject)
+- Model: AnyObject
+
 Variants: *Early instantiation* and *Lazy instantiation*.
 #### Prototype
 DEFINITION: Specify the kinds of objects to create using a prototypical instance, and create new objects by coping this prototype.
