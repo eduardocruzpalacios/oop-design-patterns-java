@@ -1,48 +1,37 @@
 package creational.builder;
 
+import creational.builder.builder.OrderBuilder;
+import creational.builder.concretebuilder.BurgerMenuBuilder;
 import creational.builder.director.Cashier;
+import creational.builder.product.Order;
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		// we have the director class for the theoretical burger restaurant
-		Cashier cashier = new Cashier();
+		// client initializes a concrete builder
+		OrderBuilder orderBuilder = new BurgerMenuBuilder();
 
-		// something happens in the client => the director calls its methods
-		// client data is director input
-		String input;
+		// the director receives the builder
+		Cashier cashier = new Cashier(orderBuilder);
 
-		// one client ask for 1 cheese burger, 2 cokes, onion rings and 1 ice cream
-		cashier.start();
-		input = "cheese burger";
-		cashier.makeBurger(input);
+		// the director constructs the product
+		String main = "cheese burger";
+		String drink = "coke";
+		String companion = "onion rings";
+		String dessert = "ice cream";
 
-		input = "coke";
-		cashier.makeDrink(input);
-		cashier.makeDrink(input);
+		Order order = cashier.construct(main, drink, companion, dessert);
 
-		input = "onion rings";
-		cashier.makeCompanion(input);
-
-		input = "ice cream";
-		cashier.makeDessert(input);
-
-		// print order
-		cashier.printOrder();
-
-		// print cost
-		System.out.println(cashier.getCost());
-
-		// reset order
-		cashier.start();
-		System.out.println("new order below should not print anything");
-		cashier.printOrder();
+		// the client can use the product
+		order.printOrder();
+		order.printCost();
 
 		/*
-		 * there is no way to delete items from outside of Order class, it causes the
-		 * Cashier would have to reset the Order to correct any mistake. It must be
-		 * implemented in Order and Cashier classes
+		 * in case new builders are needed, the maintainer would only have to create a
+		 * new concrete builder implementing Builder interface. Once it is done, the
+		 * director would be able to use the concrete builder to construct a product
+		 * which could be used by the client
 		 */
 
 	}

@@ -16,38 +16,81 @@ There is a class called *AnyObject* that is repeated along packages despite DRY 
 #### Singleton
 DEFINITION: Ensure a class only has one instance, and provide a global point of access to it.
 
+Participants:
+- Singleton: EarlySingleton (AnyObject), LazySingleton (AnyObject)
+- Model: AnyObject
+
 Variants: *Early instantiation* and *Lazy instantiation*.
 #### Prototype
 DEFINITION: Specify the kinds of objects to create using a prototypical instance, and create new objects by coping this prototype.
 
 Participants:
-- Prototype: MusicalNotePrototype
-- ConcretePrototype: HalfNotePrototypeDeepCopy, HalfNotePrototypeShadowCopy
-- Client: GraphicTool
+- Client:
+  - Graphic::getRepresentation
+  - GraphicTool (Graphic)
+- Prototype: interface MusicalNotePrototype extends Graphic
+- ConcretePrototype:
+  - HalfNotePrototypeDeepCopy
+  - HalfNotePrototypeShadowCopy
+- Model: Representation
+
+ConcretePrototype classes expose clone method to create a new object of their class by cloning a prototypical instance.
 
 Variants: *Deep copy* and *Shadow copy* clone techniques.
 #### Builder
 DEFINITION: Separate the construction of a complex object from its representation so that the same construction process can create different representations.
 
-There is a hierarchy of model classes under abstract Product class.
+Participants:
+- Builder: interface OrderBuilder
+- ConcreteBuilder: BurgerMenuBurger
+- Director: Cashier (Builder)
+- Product: Order (Item)
+- Model:
+  - abstract Item
+    - abstract Burger
+      - CheeseBurger
+      - Veggie
+    - abstract Drink
+      - Water
+      - Coke
+    - abstract Companion
+      - OnionRings
+    - abstract Dessert
+      - IceCream
 
-The Order class has a dynamic data structure for Product instances.
+Cashier::construct requests its OrderBuilder member to build the parts of an Order object.
 
-The builder steps are defined in ProductBuilder interface which is implemented by builder classes.
-
-Cashier class acts as the director by using the builders to manage an Order class.
 #### Factory method
 DEFINITION: Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory method lets a class defer instantiation to subclasses.
 
-Car factory creates children classes of Car class (SuvCar or TourismCar). The specific child returned depends on 1 parameter this factory receives.
+Variants: *abstract creator* and *parameterized creator*.
+
+Abstract creator variant Participants:
+- Product: abstract Car
+- ConcreteProduct: SuvCar
+- Creator: abstract CarCreator::createCar()
+- ConcreteCreator: SuvCarCreator
+
+Parameterized creator variant Participants:
+- Product: abstract Car
+- ConcreteProduct: SuvCar, TourismCar
+- Creator: CarCreator::createCar(CarType)
+
 #### Abstract factory
 DEFINITION: Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
 
-FactoryCreator has a static method to create children classes of AbstractFactory class (LivingRoomFurnitureFactory or OfficeFurnitureFactory). The concrete factory returned depends on 1 parameter the FactoryCreator static method receives.
-
-Both factories create related classes implementing Table and Chair interfaces, so that:
-- LivingRoomFurnitureFactory creates LivingRoomTable and LivingRoomChair.
-- OfficeFurnitureFactory creates OfficeTable and OfficeChair.
+Participants:
+- AbstractFactory: FurnitureFactory
+- ConcreteFactory: LivingRoomFurnitureFactory, OfficeFurnitureFactory
+- ConcreteFactorySingleton: LivingRoomFurnitureFactorySingleton, OfficeFurnitureFactorySingleton
+- ProductFamily1:
+  - interface Table
+    - LivingRoomTable
+    - OfficeTable
+- ProductFamily2:
+  - interface Chair
+    - LivingRoomChair
+    - OfficeChair
 ### Structural patterns
 #### Adapter
 DEFINITION: Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interface.
