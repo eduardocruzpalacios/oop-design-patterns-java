@@ -79,11 +79,18 @@ Parameterized creator variant Participants:
 #### Abstract factory
 DEFINITION: Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
 
-FactoryCreator has a static method to create children classes of AbstractFactory class (LivingRoomFurnitureFactory or OfficeFurnitureFactory). The concrete factory returned depends on 1 parameter the FactoryCreator static method receives.
-
-Both factories create related classes implementing Table and Chair interfaces, so that:
-- LivingRoomFurnitureFactory creates LivingRoomTable and LivingRoomChair.
-- OfficeFurnitureFactory creates OfficeTable and OfficeChair.
+Participants:
+- AbstractFactory: FurnitureFactory
+- ConcreteFactory: LivingRoomFurnitureFactory, OfficeFurnitureFactory
+- ConcreteFactorySingleton: LivingRoomFurnitureFactorySingleton, OfficeFurnitureFactorySingleton
+- ProductFamily1:
+  - interface Table
+    - LivingRoomTable
+    - OfficeTable
+- ProductFamily2:
+  - interface Chair
+    - LivingRoomChair
+    - OfficeChair
 ### Structural patterns
 #### Adapter
 DEFINITION: Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interface.
