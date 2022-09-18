@@ -1,4 +1,4 @@
-package creational.factorymethod.model;
+package creational.factorymethod.parameterizedcreatorvariant.product;
 
 public abstract class Car {
 
@@ -24,9 +24,8 @@ public abstract class Car {
 		return "Car [model=" + model + "]";
 	}
 
-	abstract double getBasePrice();
+	protected abstract double getBasePrice();
 
-	// super class method that uses the subclass implementation of the method above
 	public double getFinalPrice() {
 		return this.getBasePrice() * 2;
 	}

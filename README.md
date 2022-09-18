@@ -63,7 +63,19 @@ Cashier::construct requests its OrderBuilder member to build the parts of an Ord
 #### Factory method
 DEFINITION: Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory method lets a class defer instantiation to subclasses.
 
-Car factory creates children classes of Car class (SuvCar or TourismCar). The specific child returned depends on 1 parameter this factory receives.
+Variants: *abstract creator* and *parameterized creator*.
+
+Abstract creator variant Participants:
+- Product: abstract Car
+- ConcreteProduct: SuvCar
+- Creator: abstract CarCreator::createCar()
+- ConcreteCreator: SuvCarCreator
+
+Parameterized creator variant Participants:
+- Product: abstract Car
+- ConcreteProduct: SuvCar, TourismCar
+- Creator: CarCreator::createCar(CarType)
+
 #### Abstract factory
 DEFINITION: Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
 
