@@ -13,30 +13,22 @@ There is 1 runnable classes for each pattern: *Main.java*. Comments in it are in
 There is a class called *AnyObject* that is repeated along packages despite DRY (Don't Repeat Yourself) programming principle so as to facilitate the comprehension of a given pattern by the only means of the code belonging to its package. When this class appears, it means it could be substituted by any other class. 
 ## Design Patterns
 ### Creational patterns
-#### Singleton
-DEFINITION: Ensure a class only has one instance, and provide a global point of access to it.
+#### Abstract factory
+DEFINITION: Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
 
 Participants:
-- Singleton: EarlySingleton (AnyObject), LazySingleton (AnyObject)
-- Model: AnyObject
+- AbstractFactory: FurnitureFactory
+- ConcreteFactory: LivingRoomFurnitureFactory, OfficeFurnitureFactory
+- ConcreteFactorySingleton: LivingRoomFurnitureFactorySingleton, OfficeFurnitureFactorySingleton
+- ProductFamily1:
+  - interface Table
+    - LivingRoomTable
+    - OfficeTable
+- ProductFamily2:
+  - interface Chair
+    - LivingRoomChair
+    - OfficeChair
 
-Variants: *Early instantiation* and *Lazy instantiation*.
-#### Prototype
-DEFINITION: Specify the kinds of objects to create using a prototypical instance, and create new objects by coping this prototype.
-
-Participants:
-- Client:
-  - Graphic::getRepresentation
-  - GraphicTool (Graphic)
-- Prototype: interface MusicalNotePrototype extends Graphic
-- ConcretePrototype:
-  - HalfNotePrototypeDeepCopy
-  - HalfNotePrototypeShadowCopy
-- Model: Representation
-
-ConcretePrototype classes expose clone method to create a new object of their class by cloning a prototypical instance.
-
-Variants: *Deep copy* and *Shadow copy* clone techniques.
 #### Builder
 DEFINITION: Separate the construction of a complex object from its representation so that the same construction process can create different representations.
 
@@ -76,21 +68,32 @@ Parameterized creator variant Participants:
 - ConcreteProduct: SuvCar, TourismCar
 - Creator: CarCreator::createCar(CarType)
 
-#### Abstract factory
-DEFINITION: Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
+#### Prototype
+DEFINITION: Specify the kinds of objects to create using a prototypical instance, and create new objects by coping this prototype.
 
 Participants:
-- AbstractFactory: FurnitureFactory
-- ConcreteFactory: LivingRoomFurnitureFactory, OfficeFurnitureFactory
-- ConcreteFactorySingleton: LivingRoomFurnitureFactorySingleton, OfficeFurnitureFactorySingleton
-- ProductFamily1:
-  - interface Table
-    - LivingRoomTable
-    - OfficeTable
-- ProductFamily2:
-  - interface Chair
-    - LivingRoomChair
-    - OfficeChair
+- Client:
+  - Graphic::getRepresentation
+  - GraphicTool (Graphic)
+- Prototype: interface MusicalNotePrototype extends Graphic
+- ConcretePrototype:
+  - HalfNotePrototypeDeepCopy
+  - HalfNotePrototypeShadowCopy
+- Model: Representation
+
+ConcretePrototype classes expose clone method to create a new object of their class by cloning a prototypical instance.
+
+Variants: *Deep copy* and *Shadow copy* clone techniques.
+
+#### Singleton
+DEFINITION: Ensure a class only has one instance, and provide a global point of access to it.
+
+Participants:
+- Singleton: EarlySingleton (AnyObject), LazySingleton (AnyObject)
+- Model: AnyObject
+
+Variants: *Early instantiation* and *Lazy instantiation*.
+
 ### Structural patterns
 #### Adapter
 DEFINITION: Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interface.
