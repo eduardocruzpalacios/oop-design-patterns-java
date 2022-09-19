@@ -95,11 +95,11 @@ Participants:
 #### Adapter
 DEFINITION: Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interface.
 
-Adaptee is Product class, which has ean, name and price as properties.
-
-Target interface is Stock, which forces to implement getStockedLocalDateTime method returning a LocalDateTime.
-
-Adapter is StockProduct which extends Product class and implements Stock interface.
+Participants of adapter using delegate objects variant:
+- Client: Shop
+- Adaptee: Product
+- Target Interface: Stock
+- Adapter: ProductStock
 #### Bridge
 DEFINITION: Decouples an abstraction from its implementation so that the two can vary independently.
 

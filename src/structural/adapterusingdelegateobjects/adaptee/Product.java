@@ -1,4 +1,4 @@
-package structural.adapter.adaptee;
+package structural.adapterusingdelegateobjects.adaptee;
 
 public class Product {
 
