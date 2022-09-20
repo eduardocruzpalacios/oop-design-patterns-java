@@ -1,7 +1,7 @@
-package structural.adapterusingdelegateobjects;
+package structural.adapter.usingabstractoperationsvariant;
 
-import structural.adapterusingdelegateobjects.adapter.ProductStock;
-import structural.adapterusingdelegateobjects.client.Shop;
+import structural.adapter.usingabstractoperationsvariant.adapter.ProductStock;
+import structural.adapter.usingabstractoperationsvariant.client.Shop;
 
 public class Main {
 

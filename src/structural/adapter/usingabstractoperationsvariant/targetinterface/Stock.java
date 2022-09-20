@@ -1,4 +1,4 @@
-package structural.adapterusingdelegateobjects.targetinterface;
+package structural.adapter.usingabstractoperationsvariant.targetinterface;
 
 import java.time.LocalDateTime;
 

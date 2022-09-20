@@ -98,7 +98,7 @@ Variants: *Early instantiation* and *Lazy instantiation*.
 #### Adapter
 DEFINITION: Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interface.
 
-Participants of adapter using delegate objects variant:
+Participants of adapter using abstract operations variant:
 - Client: Shop
 - Adaptee: Product
 - Target Interface: Stock

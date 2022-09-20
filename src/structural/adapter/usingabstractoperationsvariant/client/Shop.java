@@ -1,9 +1,9 @@
-package structural.adapterusingdelegateobjects.client;
+package structural.adapter.usingabstractoperationsvariant.client;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import structural.adapterusingdelegateobjects.targetinterface.Stock;
+import structural.adapter.usingabstractoperationsvariant.targetinterface.Stock;
 
 public class Shop {
 
