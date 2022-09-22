@@ -106,13 +106,13 @@ Participants of adapter using abstract operations variant:
 #### Bridge / Handle / Body
 DEFINITION: Decouples an abstraction from its implementation so that the two can vary independently.
 
-The implementation-intended class is Device.java.
+Participants:
+- Abstraction: DomoticsSystem
+- RefinedAbstraction: RectoryDomoticsSystem, SportsCenterDomoticsSystem
+- Implementor: Door
+- ConcreteImplementor: FrontDoor, InnerDoor
 
-The concrete implementations are Door and Fridge classes.
-
-The abstraction is DomoticHouseControl class.
-
-The refined abstraction is SecurityFeature class, whose methods have a high control logic of the implementations it can deal with.
+DataForm in View package is a class to encapsulate the data requests to users.
 #### Composite
 DEFINITION: Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
 
