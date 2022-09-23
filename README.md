@@ -116,11 +116,11 @@ DataForm in View package is a class to encapsulate the data requests to users.
 #### Composite
 DEFINITION: Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
 
-The component-intended interface is Shape.java which holds the method draw.
-
-The leafs implementing it are Circle and Square classes.
-
-The composite is CompositeShape class, which has a data structure to store leafs and implements the Shape interface by looping all its leafs stored and calling the draw method implementation from each one.
+Participants:
+- Component: Shape
+- Composite: Grouping
+- Leaf: Circle, Square
+- Client: Main
 #### Decorator / Wrapper
 DEFINITION: Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
 
