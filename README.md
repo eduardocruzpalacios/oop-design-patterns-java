@@ -13,30 +13,22 @@ There is 1 runnable classes for each pattern: *Main.java*. Comments in it are in
 There is a class called *AnyObject* that is repeated along packages despite DRY (Don't Repeat Yourself) programming principle so as to facilitate the comprehension of a given pattern by the only means of the code belonging to its package. When this class appears, it means it could be substituted by any other class. 
 ## Design Patterns
 ### Creational patterns
-#### Singleton
-DEFINITION: Ensure a class only has one instance, and provide a global point of access to it.
+#### Abstract factory / Kit
+DEFINITION: Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
 
 Participants:
-- Singleton: EarlySingleton (AnyObject), LazySingleton (AnyObject)
-- Model: AnyObject
+- AbstractFactory: FurnitureFactory
+- ConcreteFactory: LivingRoomFurnitureFactory, OfficeFurnitureFactory
+- ConcreteFactorySingleton: LivingRoomFurnitureFactorySingleton, OfficeFurnitureFactorySingleton
+- ProductFamily1:
+  - interface Table
+    - LivingRoomTable
+    - OfficeTable
+- ProductFamily2:
+  - interface Chair
+    - LivingRoomChair
+    - OfficeChair
 
-Variants: *Early instantiation* and *Lazy instantiation*.
-#### Prototype
-DEFINITION: Specify the kinds of objects to create using a prototypical instance, and create new objects by coping this prototype.
-
-Participants:
-- Client:
-  - Graphic::getRepresentation
-  - GraphicTool (Graphic)
-- Prototype: interface MusicalNotePrototype extends Graphic
-- ConcretePrototype:
-  - HalfNotePrototypeDeepCopy
-  - HalfNotePrototypeShadowCopy
-- Model: Representation
-
-ConcretePrototype classes expose clone method to create a new object of their class by cloning a prototypical instance.
-
-Variants: *Deep copy* and *Shadow copy* clone techniques.
 #### Builder
 DEFINITION: Separate the construction of a complex object from its representation so that the same construction process can create different representations.
 
@@ -60,7 +52,7 @@ Participants:
 
 Cashier::construct requests its OrderBuilder member to build the parts of an Order object.
 
-#### Factory method
+#### Factory method / Virtual Constructor
 DEFINITION: Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory method lets a class defer instantiation to subclasses.
 
 Variants: *abstract creator* and *parameterized creator*.
@@ -76,88 +68,103 @@ Parameterized creator variant Participants:
 - ConcreteProduct: SuvCar, TourismCar
 - Creator: CarCreator::createCar(CarType)
 
-#### Abstract factory
-DEFINITION: Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
+#### Prototype
+DEFINITION: Specify the kinds of objects to create using a prototypical instance, and create new objects by coping this prototype.
 
 Participants:
-- AbstractFactory: FurnitureFactory
-- ConcreteFactory: LivingRoomFurnitureFactory, OfficeFurnitureFactory
-- ConcreteFactorySingleton: LivingRoomFurnitureFactorySingleton, OfficeFurnitureFactorySingleton
-- ProductFamily1:
-  - interface Table
-    - LivingRoomTable
-    - OfficeTable
-- ProductFamily2:
-  - interface Chair
-    - LivingRoomChair
-    - OfficeChair
+- Client:
+  - Graphic::getRepresentation
+  - GraphicTool (Graphic)
+- Prototype: interface MusicalNotePrototype extends Graphic
+- ConcretePrototype:
+  - HalfNotePrototypeDeepCopy
+  - HalfNotePrototypeShadowCopy
+- Model: Representation
+
+ConcretePrototype classes expose clone method to create a new object of their class by cloning a prototypical instance.
+
+Variants: *Deep copy* and *Shadow copy* clone techniques.
+
+#### Singleton
+DEFINITION: Ensure a class only has one instance, and provide a global point of access to it.
+
+Participants:
+- Singleton: EarlySingleton (AnyObject), LazySingleton (AnyObject)
+- Model: AnyObject
+
+Variants: *Early instantiation* and *Lazy instantiation*.
+
 ### Structural patterns
-#### Adapter
+#### Adapter / Wrapper
 DEFINITION: Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interface.
 
-Adaptee is Product class, which has ean, name and price as properties.
+Variants: *Using abstract operations*.
 
-Target interface is Stock, which forces to implement getStockedLocalDateTime method returning a LocalDateTime.
-
-Adapter is StockProduct which extends Product class and implements Stock interface.
-#### Bridge
+Participants of adapter using abstract operations variant:
+- Client: Shop
+- Adaptee: Product
+- Target Interface: Stock
+- Adapter: ProductStock
+#### Bridge / Handle / Body
 DEFINITION: Decouples an abstraction from its implementation so that the two can vary independently.
 
-The implementation-intended class is Device.java.
+Participants:
+- Abstraction: DomoticsSystem
+- RefinedAbstraction: RectoryDomoticsSystem, SportsCenterDomoticsSystem
+- Implementor: Door
+- ConcreteImplementor: FrontDoor, InnerDoor
 
-The concrete implementations are Door and Fridge classes.
-
-The abstraction is DomoticHouseControl class.
-
-The refined abstraction is SecurityFeature class, whose methods have a high control logic of the implementations it can deal with.
+DataForm in View package is a class to encapsulate the data requests to users.
 #### Composite
 DEFINITION: Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
 
-The component-intended interface is Shape.java which holds the method draw.
-
-The leafs implementing it are Circle and Square classes.
-
-The composite is CompositeShape class, which has a data structure to store leafs and implements the Shape interface by looping all its leafs stored and calling the draw method implementation from each one.
-#### Decorator
+Participants:
+- Component: Shape
+- Composite: Grouping
+- Leaf: Circle, Square
+- Client: Main
+#### Decorator / Wrapper
 DEFINITION: Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
 
-The component-intended interface is Cleaning.java.
+Participants:
+- Component: CleaningMachine
+- ConcreteComponent: BikeCleaningMachine, CarCleaningMachine
+- Decorator: Cleaning
+- ConcreteDecorator: HotWaterCleaning, HotWaterWithSoapCleaning
 
-Concrete components classes implementing it are BikeCleaning and CarCleaning.
-
-The decorator is the abstract CleaningDecorator class which has a reference to a component-intended instance and implements the Cleaning interface by calling the implemented method of its component-typed property.
-
-Concrete decorators extend the decorator and override the implemented method of it superclass and modify what it does.
 #### Facade
 DEFINITION: Provides a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.
 
-The subsystem consists of ArrayEncrypt interface and its implementations: ArithmeticEncrypt and ExponentialEncrypt classes.
-
-The Facade-intended class is ArrayEncryptFacade.java. It receives a data structure and a String. Depending on the value of this String, a concrete implementation of the subsystem is called and uses the data structure.
+Participants:
+- Client: AnyVideoGame implements VideoGame
+- Facade: VideoGamesConsole
+- Subsystem:
+  - VideoGamesConsoleImpl (VideoGame, DiskReader)
+  - DiskReader
+  - interface VideoGame
 #### Flyweight
 DEFINITION: Use sharing to support large numbers of fine-grained objects efficiently.
 
-Flyweight is ObjectType.
+Participants:
+- Flyweight: Sprite
+- FlyweightFactory: SpriteFactory
+- ConcreteFlyweight: ObjectSprite
+- Context: Square
+- Client: Board
 
-Flyweight factory is ObjectFactory, and returns a ObjectType from a HashMap of them that acts as an object pool.
-
-There is a DAO-intended class named ObjectTypeDao.
-
-ObjectStatus class is a data model.
-
-Context is Object and has references to a ObjectStatus and a Flyweight objects.
-
-Client is ConcreteRenderedMap. It has a HashMap to store context instances. Its key is a static int that increments after a new context instances is put.
-#### Proxy
+Limitations:
+- UnsharedConcreteFlyweight participant is not included. To include it, it would be necessary to implement Composite design pattern inside this example where UnsharedConcreteFlyweight participant would act as Composite, Flyweight as Component and ConcreteFlyweight as Leaf. Possible classes for UnsharedConcreteFlyweight would be RowSprite and ColumnSprite.
+#### Proxy / Surrogate
 DEFINITION: Provides a surrogate or placeholder for another object to control access to it.
 
-HttpRequest and Webpage classes are model-intended classes.
+Variants: *Virtual proxy*.
 
-The service for which a proxy is created is HttpServiceImpl class, from which HttpService interface has been extracted. The service uses a HttpRequest object and returns a Webpage instance.
+Participants of virtual proxy variant:
+- RealSubject: Webpage implements WebpageService
+- Proxy: WebpageProxy implements WebpageService
+- Subject: WebpageService
+- Model: HtmlDocument
 
-CachedHttpServiceImpl is the proxy-intended class for HttpServiceImpl. It has a HashMap to store Webpage instances already returned using the url property of the HttpRequest object as key. First, the method implemented searches in this data structure.
-- In case no Webpage object had been cached for a given url before, the service that execute the expensive query is called and afterwards the returned Webpage instance is stored in the cache and returned by the proxy.
-- In case a Webpage object had been cached for a given url before, the service returns it.
 ### Behavioral patterns
 #### Chain of responsibility
 DEFINITION: Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request. Chain the receiving objects and pass the request along the chain until an object handles it.
@@ -167,7 +174,7 @@ Grant abstract class represents the Handler.
 Their children (Grant1, Grant2 and Grant3) are the concrete handlers in charge of processing a given int (the level of grant) to print the allowed actions for the corresponding role.
 
 ChainOfResponsibility class acts as client and holds the static method that builds the chain and returns the first handler that have to handle the request.
-#### Command
+#### Command / Action / Transaction
 DEFINITION: Encapsulate a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.
 
 Command is an abstract class whose children must provide a body for the execute method. It has a reference to the receiver.
@@ -190,7 +197,7 @@ Abstract expression is DateExpression and has an abstract void method the uses a
 Concrete expressions (DayExpression, MonthExpression & YearExpression classes) inherit DateExpression abstract class and implement its abstract method.
 
 DateParser is not part of the interpreter pattern. It acts as client that uses the Interpreter pattern.
-#### Iterator
+#### Iterator / Cursor
 DEFINITION: Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
 
 There are 2 interfaces:
@@ -217,7 +224,7 @@ The concrete mediator is ChatRoom class,implements the former interface and stor
 Participant interface has methods to get the own id, to operate to one or all other participants in the same mediator, and to disconnect from its mediator.
 
 Message is the model for what is sent and has a reference for the message value, the sender and the date and time it was sent.
-#### Memento
+#### Memento / Token
 DEFINITION: Without violating encapsulation, capture and externalize an object's internal state so that the object can be restored to this state later.
 
 Memento interface ensures all its implementations have a getter to get the state (represented as a generic). Its implementation is Snapshot class.
@@ -225,13 +232,13 @@ Memento interface ensures all its implementations have a getter to get the state
 Originator interface ensures all its implementations have methods to save the current state by returning it and to restore its own state by using a given Memento. Its implementation is Editor class.
 
 The History class is the caretaker and hold a list for mementos as well as methods to add a new one and retrieve them.
-#### Observer
+#### Observer / Dependents / Publish-Subscribe
 DEFINITION: Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
 
 Observable abstract class is prepared to bestow all the logic needed for creating concrete observables by inheriting it: subscribe, unsubscribe, change state and notify to observers.
 
 Observer interface make its implementations to provide a logic for update method.
-#### State
+#### State / Objects for States
 DEFINITION: Allows an object to alter its behavior when its internal state changes. The object will appear to change its class.
 
 State interface has init and stop methods.
@@ -241,7 +248,7 @@ Concrete states are On and Off and implement methods of their interface.
 The context is Car class, has a reference to a State instance, a setter to change it, and methods to call the methods of the State instance.
  
 There is a state controller that has property and a method for every single concrete state. The properties are the concrete states and the methods receive the context and change its state to a concrete one.
-#### Strategy
+#### Strategy / Policy
 DEFINITION: Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
 
 Coordinate is a model class.
@@ -253,7 +260,7 @@ Concrete strategies implement GoStrategy interface in a sense that each one has 
 The Context-intended class is GPS and has:
 - a reference to a GoStrategy instance.
 - getTime method that uses 2 Coordinate instances, call the implemented method of its GoStrategy instance passing it those 2 2 Coordinate instances.
-#### Template
+#### Template Method
 DEFINITION: Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template method lets subclasses redefine certain steps of an algorithm without changing the algorithms structure.
 
 The algorithm template with the steps defined is in meetUp method of the BoardGamePlayAlgorithm abstract class:

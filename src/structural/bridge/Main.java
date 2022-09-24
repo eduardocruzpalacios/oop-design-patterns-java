@@ -1,66 +1,34 @@
 package structural.bridge;
 
-import structural.bridge.abstraction.DomoticHouseControl;
-import structural.bridge.implementations.Device;
-import structural.bridge.implementations.Door;
-import structural.bridge.implementations.Fridge;
-import structural.bridge.refinedabstractions.SecurityFeature;
+import structural.bridge.abstraction.DomoticsSystem;
+import structural.bridge.concreteimplementor.FrontDoor;
+import structural.bridge.concreteimplementor.InnerDoor;
+import structural.bridge.implementor.Door;
+import structural.bridge.refinedabstraction.RectoryDomoticsSystem;
+import structural.bridge.refinedabstraction.SportsCenterDomoticsSystem;
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		// initialize refined abstraction
-		DomoticHouseControl domoticHouseControl = new SecurityFeature();
+		// initialize refined abstractions of a university domotics system
+		DomoticsSystem rectoryDomoticsSystem = new RectoryDomoticsSystem();
+		DomoticsSystem sportsCenterDomoticsSystem = new SportsCenterDomoticsSystem();
 
-		// initialize concrete implementations
-		Device door = new Door(false);
-		Device fridge = new Fridge(18);
+		// initialize concrete implementors
+		Door frontDoor = new FrontDoor();
+		Door innerDoor = new InnerDoor();
 
-		// make refined abstraction have the references to the concrete implementations
-		domoticHouseControl.addDevice("door", door);
-		domoticHouseControl.addDevice("fridge", fridge);
+		// make refined abstraction have the references to the concrete implementors and test methods
+		rectoryDomoticsSystem.setDoor(innerDoor);
+		rectoryDomoticsSystem.openDoor();
+		rectoryDomoticsSystem.setDoor(frontDoor);
+		rectoryDomoticsSystem.openDoor();
 
-		// test implementations logic
-		System.out.println(door);
-		door.execute("open");
-		System.out.println(door);
-		door.execute("close");
-		System.out.println(door);
-		door.execute("fake command");
-
-		System.out.println(fridge);
-		fridge.execute("increase");
-		System.out.println(fridge);
-		fridge.execute("decrease");
-		System.out.println(fridge);
-		fridge.execute("fake command");
-
-		/*
-		 * test high-level control logic of the refined abstraction over their
-		 * implementations
-		 */
-		domoticHouseControl.execute("open", "door");
-		System.out.println(door);
-
-		domoticHouseControl.execute("decrease", "fridge");
-		System.out.println(fridge);
-
-		((SecurityFeature) domoticHouseControl).executeSafed("close", "door", "wrong code");
-		System.out.println(door);
-
-		((SecurityFeature) domoticHouseControl).executeSafed("close", "door", "2022");
-		System.out.println(door);
-
-		/*
-		 * notes for future improvement:
-		 * 
-		 * - make different interfaces for different kinds of devices: lights, sound,
-		 * cook, etc. And make the abstraction capable of controlling all of them
-		 * 
-		 * - make methods more descriptive, such as open or close for the door, instead
-		 * of passing a magic String as argument
-		 */
+		sportsCenterDomoticsSystem.setDoor(innerDoor);
+		sportsCenterDomoticsSystem.openDoor();
+		sportsCenterDomoticsSystem.setDoor(frontDoor);
+		sportsCenterDomoticsSystem.openDoor();
 
 	}
 
