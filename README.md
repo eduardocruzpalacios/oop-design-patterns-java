@@ -133,9 +133,13 @@ Participants:
 #### Facade
 DEFINITION: Provides a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.
 
-The subsystem consists of ArrayEncrypt interface and its implementations: ArithmeticEncrypt and ExponentialEncrypt classes.
-
-The Facade-intended class is ArrayEncryptFacade.java. It receives a data structure and a String. Depending on the value of this String, a concrete implementation of the subsystem is called and uses the data structure.
+Participants:
+- Client: AnyVideoGame implements VideoGame
+- Facade: VideoGamesConsole
+- Subsystem:
+  - VideoGamesConsoleImpl (VideoGame, DiskReader)
+  - DiskReader
+  - interface VideoGame
 #### Flyweight
 DEFINITION: Use sharing to support large numbers of fine-grained objects efficiently.
 
