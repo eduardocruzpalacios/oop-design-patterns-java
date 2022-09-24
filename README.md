@@ -143,17 +143,15 @@ Participants:
 #### Flyweight
 DEFINITION: Use sharing to support large numbers of fine-grained objects efficiently.
 
-Flyweight is ObjectType.
+Participants:
+- Flyweight: Sprite
+- FlyweightFactory: SpriteFactory
+- ConcreteFlyweight: ObjectSprite
+- Context: Square
+- Client: Board
 
-Flyweight factory is ObjectFactory, and returns a ObjectType from a HashMap of them that acts as an object pool.
-
-There is a DAO-intended class named ObjectTypeDao.
-
-ObjectStatus class is a data model.
-
-Context is Object and has references to a ObjectStatus and a Flyweight objects.
-
-Client is ConcreteRenderedMap. It has a HashMap to store context instances. Its key is a static int that increments after a new context instances is put.
+Limitations:
+- UnsharedConcreteFlyweight participant is not included. To include it, it would be necessary to implement Composite design pattern inside this example where UnsharedConcreteFlyweight participant would act as Composite, Flyweight as Component and ConcreteFlyweight as Leaf. Possible classes for UnsharedConcreteFlyweight would be RowSprite and ColumnSprite.
 #### Proxy / Surrogate
 DEFINITION: Provides a surrogate or placeholder for another object to control access to it.
 
