@@ -124,13 +124,12 @@ Participants:
 #### Decorator / Wrapper
 DEFINITION: Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
 
-The component-intended interface is Cleaning.java.
+Participants:
+- Component: CleaningMachine
+- ConcreteComponent: BikeCleaningMachine, CarCleaningMachine
+- Decorator: Cleaning
+- ConcreteDecorator: HotWaterCleaning, HotWaterWithSoapCleaning
 
-Concrete components classes implementing it are BikeCleaning and CarCleaning.
-
-The decorator is the abstract CleaningDecorator class which has a reference to a component-intended instance and implements the Cleaning interface by calling the implemented method of its component-typed property.
-
-Concrete decorators extend the decorator and override the implemented method of it superclass and modify what it does.
 #### Facade
 DEFINITION: Provides a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.
 
