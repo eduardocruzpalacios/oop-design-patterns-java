@@ -1,18 +1,15 @@
-package structural.proxy.model;
+package structural.proxy.virtualproxyvariant.model;
 
-public class Webpage {
+public class HtmlDocument {
 
 	private String html;
 	private String css;
 	private String js;
 
-	public Webpage() {
-		super();
-		// TODO Auto-generated constructor stub
+	public HtmlDocument() {
 	}
 
-	public Webpage(String html, String css, String js) {
-		super();
+	public HtmlDocument(String html, String css, String js) {
 		this.html = html;
 		this.css = css;
 		this.js = js;

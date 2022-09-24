@@ -98,6 +98,8 @@ Variants: *Early instantiation* and *Lazy instantiation*.
 #### Adapter / Wrapper
 DEFINITION: Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interface.
 
+Variants: *Using abstract operations*.
+
 Participants of adapter using abstract operations variant:
 - Client: Shop
 - Adaptee: Product
@@ -155,13 +157,14 @@ Limitations:
 #### Proxy / Surrogate
 DEFINITION: Provides a surrogate or placeholder for another object to control access to it.
 
-HttpRequest and Webpage classes are model-intended classes.
+Variants: *Virtual proxy*.
 
-The service for which a proxy is created is HttpServiceImpl class, from which HttpService interface has been extracted. The service uses a HttpRequest object and returns a Webpage instance.
+Participants of virtual proxy variant:
+- RealSubject: Webpage implements WebpageService
+- Proxy: WebpageProxy implements WebpageService
+- Subject: WebpageService
+- Model: HtmlDocument
 
-CachedHttpServiceImpl is the proxy-intended class for HttpServiceImpl. It has a HashMap to store Webpage instances already returned using the url property of the HttpRequest object as key. First, the method implemented searches in this data structure.
-- In case no Webpage object had been cached for a given url before, the service that execute the expensive query is called and afterwards the returned Webpage instance is stored in the cache and returned by the proxy.
-- In case a Webpage object had been cached for a given url before, the service returns it.
 ### Behavioral patterns
 #### Chain of responsibility
 DEFINITION: Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request. Chain the receiving objects and pass the request along the chain until an object handles it.
