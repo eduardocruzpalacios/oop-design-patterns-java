@@ -188,13 +188,17 @@ Participants:
 #### Interpreter
 DEFINITION: Given a language, define a representation for its grammar along with an interpreter that uses the representation to interpret sentences in the language.
 
-DateContext contains references to a String value for an expression and other three int values for a date: day, month and year.
+Participants:
+- AbstractExpression: interface RegularExpression
+- TerminalExpression: LiteralExpression
+- NonTerminalExpression: AlternationExpression, RepetitionExpression, SequenceExpression
+- Context (AnyString)
+- Client: LiteralExpressionTest, AlternationExpressionTest, RepetitionExpressionTest, SequenceExpressionTest
 
-Abstract expression is DateExpression and has an abstract void method the uses a DateContext object.
-
-Concrete expressions (DayExpression, MonthExpression & YearExpression classes) inherit DateExpression abstract class and implement its abstract method.
-
-DateParser is not part of the interpreter pattern. It acts as client that uses the Interpreter pattern.
+Limitations:
+- Parser not included to create an Abstract Syntax Tree.
+- Visitor pattern is not used to implement interpret operations.
+- Terminal symbols are not shared by means of the Flyweight pattern.
 #### Iterator / Cursor
 DEFINITION: Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
 
