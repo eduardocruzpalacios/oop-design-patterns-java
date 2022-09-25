@@ -169,11 +169,12 @@ Participants of virtual proxy variant:
 #### Chain of responsibility
 DEFINITION: Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request. Chain the receiving objects and pass the request along the chain until an object handles it.
 
-Grant abstract class represents the Handler.
+Participants:
+- Handler: abstract HtmlElement (AnyRequest)
+- ConcreteHandler: DivHtmlElement, ButtonHtmlElement
+- Model: AnyRequest
+- Client: Main
 
-Their children (Grant1, Grant2 and Grant3) are the concrete handlers in charge of processing a given int (the level of grant) to print the allowed actions for the corresponding role.
-
-ChainOfResponsibility class acts as client and holds the static method that builds the chain and returns the first handler that have to handle the request.
 #### Command / Action / Transaction
 DEFINITION: Encapsulate a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.
 
