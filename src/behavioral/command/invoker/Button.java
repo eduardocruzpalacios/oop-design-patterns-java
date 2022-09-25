@@ -1,15 +1,15 @@
-package behavioral.command.senders;
+package behavioral.command.invoker;
 
-import behavioral.command.commands.Command;
+import behavioral.command.command.Command;
 
-public class ShortCut {
+public class Button {
 
 	private Command command;
 
-	public ShortCut() {
+	public Button() {
 	}
 
-	public ShortCut(Command command) {
+	public Button(Command command) {
 		this.command = command;
 	}
 
@@ -21,7 +21,7 @@ public class ShortCut {
 		this.command = command;
 	}
 
-	public void press() {
+	public void click() {
 		this.command.execute();
 	}
 

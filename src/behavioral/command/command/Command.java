@@ -1,4 +1,4 @@
-package behavioral.command.commands;
+package behavioral.command.command;
 
 import behavioral.command.receiver.Gui;
 

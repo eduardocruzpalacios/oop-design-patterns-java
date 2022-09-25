@@ -178,16 +178,13 @@ Participants:
 #### Command / Action / Transaction
 DEFINITION: Encapsulate a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.
 
-Command is an abstract class whose children must provide a body for the execute method. It has a reference to the receiver.
+Participants:
+- Command: Command (Gui)
+- ConcreteCommand: CopyCommand extends Command
+- Invoker: Button (Command), Shortcut (Command)
+- Receiver: Gui (Command, Invoker)
+- Client: Main
 
-Concrete command is CopyCommand. It implements its abstract superclass method by specifying what happens in the receiver.
-
-Senders are Button and ShortCut classes. They have a reference to a command instance.
-
-Client is Gui and has:
-- Concrete commands using the own client instance.
-- Different senders using the same concrete command.
-- Methods that calls senders' methods that, in turn, call concrete commands' methods that actually execute the actions.
 #### Interpreter
 DEFINITION: Given a language, define a representation for its grammar along with an interpreter that uses the representation to interpret sentences in the language.
 

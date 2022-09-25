@@ -1,5 +1,6 @@
-package behavioral.command.commands;
+package behavioral.command.concretecommand;
 
+import behavioral.command.command.Command;
 import behavioral.command.receiver.Gui;
 
 public class CopyCommand extends Command {
