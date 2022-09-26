@@ -1,7 +1,7 @@
-package behavioral.iterator;
+package behavioral.iterator.client;
 
-import behavioral.iterator.iterables.SingleLinkedList;
-import behavioral.iterator.iterators.Iterator;
+import behavioral.iterator.concreteaggregate.SingleLinkedList;
+import behavioral.iterator.iterator.Iterator;
 import behavioral.iterator.model.Node;
 
 public class Main {

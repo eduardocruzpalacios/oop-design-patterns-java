@@ -1,13 +1,14 @@
-package behavioral.iterator.iterables;
+package behavioral.iterator.concreteaggregate;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import behavioral.iterator.iterators.Iterator;
-import behavioral.iterator.iterators.SingleLinkedListIterator;
+import behavioral.iterator.aggregate.Aggregate;
+import behavioral.iterator.concreteiterator.SingleLinkedListIterator;
+import behavioral.iterator.iterator.Iterator;
 import behavioral.iterator.model.Node;
 
-public class SingleLinkedList implements Iterable {
+public class SingleLinkedList implements Aggregate {
 
 	private Node head;
 	private Node tail;

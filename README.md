@@ -202,20 +202,15 @@ Limitations:
 #### Iterator / Cursor
 DEFINITION: Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
 
-There are 2 interfaces:
-- Iterator with hasNext and next methods.
-- Iterable with getIterator method that returns an instance of the previous interface.
+Variants: *External non-robust polymorphic iterator*.
 
-The implementation of Iterable interface is SingleLinkedList:
-- It is a data structure coded for this pattern.
-- Uses Node class which acts as model.
-- Acts as collection.
-- Its implemented method returns an instance of the corresponding implementation of the other interface (SingleLinkedListIterator implementing Iterator). It receives the own instance of SingleLinkedList.
+Participants of external non-robust polymorphic iterator variant:
+- Iterator: interface Iterator
+- ConcreteIterator: SingleLinkedListIterator
+- Aggregate: Aggregate
+- ConcreteAggregate: SingleLinkedList
+- Client: Main
 
-The implementation of Iterator interface is SingleLinkedListIterator:
-- has a reference to the corresponding implementation of the other interface (SingleLinkedList implementing Iterable), which is needed to implement the methods of its interface.
-
-In the Main class the functionality of both the Single Linked List and Iterator behavioral pattern is tested.
 #### Mediator
 DEFINITION: Define an object that encapsulate how a set of objects interact. Mediator promotes loose couping by keeping objects from referring to each other explicitly, and it lets you vary their interaction independently.
 

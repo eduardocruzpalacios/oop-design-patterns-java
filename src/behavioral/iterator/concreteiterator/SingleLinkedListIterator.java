@@ -1,6 +1,7 @@
-package behavioral.iterator.iterators;
+package behavioral.iterator.concreteiterator;
 
-import behavioral.iterator.iterables.SingleLinkedList;
+import behavioral.iterator.concreteaggregate.SingleLinkedList;
+import behavioral.iterator.iterator.Iterator;
 
 public class SingleLinkedListIterator implements Iterator {
 
