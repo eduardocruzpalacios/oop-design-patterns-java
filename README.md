@@ -223,11 +223,10 @@ Participants:
 #### Memento / Token
 DEFINITION: Without violating encapsulation, capture and externalize an object's internal state so that the object can be restored to this state later.
 
-Memento interface ensures all its implementations have a getter to get the state (represented as a generic). Its implementation is Snapshot class.
-
-Originator interface ensures all its implementations have methods to save the current state by returning it and to restore its own state by using a given Memento. Its implementation is Editor class.
-
-The History class is the caretaker and hold a list for mementos as well as methods to add a new one and retrieve them.
+Participants:
+- Originator: StateDesiredToStore
+- Memento: Memento
+- Caretaker: Main
 #### Observer / Dependents / Publish-Subscribe
 DEFINITION: Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
 
