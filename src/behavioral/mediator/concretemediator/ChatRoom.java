@@ -1,10 +1,11 @@
-package behavioral.mediator.mediators;
+package behavioral.mediator.concretemediator;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import behavioral.mediator.colleagueclass.Participant;
+import behavioral.mediator.mediator.Mediator;
 import behavioral.mediator.model.Message;
-import behavioral.mediator.participants.Participant;
 
 public class ChatRoom implements Mediator {
 

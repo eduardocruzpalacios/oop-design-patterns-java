@@ -2,11 +2,11 @@ package behavioral.mediator;
 
 import java.time.LocalDateTime;
 
-import behavioral.mediator.mediators.ChatRoom;
-import behavioral.mediator.mediators.Mediator;
+import behavioral.mediator.colleagueclass.Participant;
+import behavioral.mediator.concretecolleagueclass.ChatUser;
+import behavioral.mediator.concretemediator.ChatRoom;
+import behavioral.mediator.mediator.Mediator;
 import behavioral.mediator.model.Message;
-import behavioral.mediator.participants.ChatUser;
-import behavioral.mediator.participants.Participant;
 
 public class Main {
 
@@ -43,14 +43,14 @@ public class Main {
 
 		/*
 		 * in case a new concrete participant is needed, the maintainer must:
-		 * 
-		 * - create the class in participants package implementing Participant
+		 *
+		 * - create the class in concretecolleagueclass package implementing Participant
 		 * interface. Doing so, current concrete mediator could work with it
-		 * 
+		 *
 		 * in case a new concrete mediator is needed, the maintainer must:
-		 * 
-		 * - create the class in mediators package implementing Mediator interface.
-		 * Doing so, this could work with current concrete participants
+		 *
+		 * - create the class in concretemediator package implementing Mediator
+		 * interface. Doing so, this could work with current concrete colleague classes
 		 */
 
 	}

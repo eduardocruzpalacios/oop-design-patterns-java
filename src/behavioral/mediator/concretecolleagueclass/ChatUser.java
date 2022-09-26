@@ -1,6 +1,7 @@
-package behavioral.mediator.participants;
+package behavioral.mediator.concretecolleagueclass;
 
-import behavioral.mediator.mediators.Mediator;
+import behavioral.mediator.colleagueclass.Participant;
+import behavioral.mediator.mediator.Mediator;
 import behavioral.mediator.model.Message;
 
 public class ChatUser implements Participant {

@@ -214,13 +214,12 @@ Participants of external non-robust polymorphic iterator variant:
 #### Mediator
 DEFINITION: Define an object that encapsulate how a set of objects interact. Mediator promotes loose couping by keeping objects from referring to each other explicitly, and it lets you vary their interaction independently.
 
-Mediator interface has methods to link and unlink a Participant instance, to notify all its Participant instance, and to notify a single one.
-
-The concrete mediator is ChatRoom class,implements the former interface and storage all the references to its Participant instances in a HashMap.
-
-Participant interface has methods to get the own id, to operate to one or all other participants in the same mediator, and to disconnect from its mediator.
-
-Message is the model for what is sent and has a reference for the message value, the sender and the date and time it was sent.
+Participants:
+- Mediator: interface mediator
+- ConcreteMediator: ChatRoom
+- ColleagueClass: interface Participant
+- ConcreteColleagueClass: CharUser
+- Model: Message
 #### Memento / Token
 DEFINITION: Without violating encapsulation, capture and externalize an object's internal state so that the object can be restored to this state later.
 

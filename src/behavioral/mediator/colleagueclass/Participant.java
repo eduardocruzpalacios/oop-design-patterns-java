@@ -1,4 +1,4 @@
-package behavioral.mediator.participants;
+package behavioral.mediator.colleagueclass;
 
 import behavioral.mediator.model.Message;
 

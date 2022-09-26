@@ -1,7 +1,7 @@
-package behavioral.mediator.mediators;
+package behavioral.mediator.mediator;
 
+import behavioral.mediator.colleagueclass.Participant;
 import behavioral.mediator.model.Message;
-import behavioral.mediator.participants.Participant;
 
 public interface Mediator {
 
