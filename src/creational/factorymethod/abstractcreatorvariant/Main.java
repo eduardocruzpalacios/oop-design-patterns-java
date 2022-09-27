@@ -22,12 +22,6 @@ public class Main {
 		// client can use product
 		System.out.println(car.getFinalPrice());
 
-		/*
-		 * in case new concrete products are needed the maintainer would have to create
-		 * a new concrete product class extending and implementing Car class and a new
-		 * concrete creator extending and implementing CarCreator class
-		 */
-
 	}
 
 }

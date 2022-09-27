@@ -2,7 +2,7 @@ package behavioral.mediator.model;
 
 import java.time.LocalDateTime;
 
-import behavioral.mediator.participants.Participant;
+import behavioral.mediator.colleagueclass.Participant;
 
 public class Message {
 

@@ -27,13 +27,6 @@ public class Main {
 		order.printOrder();
 		order.printCost();
 
-		/*
-		 * in case new builders are needed, the maintainer would only have to create a
-		 * new concrete builder implementing Builder interface. Once it is done, the
-		 * director would be able to use the concrete builder to construct a product
-		 * which could be used by the client
-		 */
-
 	}
 
 }

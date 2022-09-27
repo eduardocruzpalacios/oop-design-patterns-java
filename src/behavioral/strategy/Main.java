@@ -1,9 +1,9 @@
 package behavioral.strategy;
 
+import behavioral.strategy.concretestrategy.ByCar;
+import behavioral.strategy.concretestrategy.ByWalk;
 import behavioral.strategy.context.GPS;
 import behavioral.strategy.model.Coordinate;
-import behavioral.strategy.strategies.ByCar;
-import behavioral.strategy.strategies.ByWalk;
 
 public class Main {
 
