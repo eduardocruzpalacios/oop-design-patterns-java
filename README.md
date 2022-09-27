@@ -251,15 +251,11 @@ Participants:
 #### Strategy / Policy
 DEFINITION: Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
 
-Coordinate is a model class.
-
-GoStrategy interface has a method that receives 2 Coordinate objects and return the minutes taken to go from one to the another.
-
-Concrete strategies implement GoStrategy interface in a sense that each one has a different algorithm for that calculation.
-
-The Context-intended class is GPS and has:
-- a reference to a GoStrategy instance.
-- getTime method that uses 2 Coordinate instances, call the implemented method of its GoStrategy instance passing it those 2 2 Coordinate instances.
+Participants:
+- Context: GPS
+- Strategy: interface GoStrategy
+- ConcreteStrategy: ByCar, ByWalk
+- Model: Coordinate
 #### Template Method
 DEFINITION: Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template method lets subclasses redefine certain steps of an algorithm without changing the algorithms structure.
 

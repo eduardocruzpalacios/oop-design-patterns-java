@@ -1,6 +1,7 @@
-package behavioral.strategy.strategies;
+package behavioral.strategy.concretestrategy;
 
 import behavioral.strategy.model.Coordinate;
+import behavioral.strategy.strategy.GoStrategy;
 
 public class ByCar implements GoStrategy {
 

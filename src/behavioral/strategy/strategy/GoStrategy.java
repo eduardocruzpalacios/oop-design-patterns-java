@@ -1,4 +1,4 @@
-package behavioral.strategy.strategies;
+package behavioral.strategy.strategy;
 
 import behavioral.strategy.model.Coordinate;
 
