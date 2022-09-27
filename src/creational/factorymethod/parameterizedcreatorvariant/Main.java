@@ -27,12 +27,6 @@ public class Main {
 		Car car3 = CarCreator.createCar(null);
 		System.out.println(car3);
 
-		/*
-		 * in case new concrete products are needed the maintainer would have to create
-		 * a new concrete product class extending and implementing Car class and modify
-		 * createCar method of CarCreator to be able to return this new concrete product
-		 */
-
 	}
 
 }

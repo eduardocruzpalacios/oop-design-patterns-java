@@ -1,51 +1,43 @@
 package behavioral.observer;
 
-import behavioral.observer.observables.ConcreteObservable;
-import behavioral.observer.observables.Observable;
-import behavioral.observer.observers.ConcreteObserver;
-import behavioral.observer.observers.Observer;
+import behavioral.observer.concreteobserver.ConcreteObserver;
+import behavioral.observer.concretesubject.ConcreteSubject;
+import behavioral.observer.observer.Observer;
+import behavioral.observer.subject.Subject;
 
 class Main {
 
 	public static void main(String[] args) {
 
-		// initialize an observable
-		Observable<Integer> observable = new ConcreteObservable();
+		// initialize subject
+		Subject subject = new ConcreteSubject();
 
 		// initialize 2 observers
-		Observer<Integer> observer1 = new ConcreteObserver();
-		Observer<Integer> observer2 = new ConcreteObserver();
+		Observer observer1 = new ConcreteObserver();
+		Observer observer2 = new ConcreteObserver();
 
-		// observers are subscribed to the observable
-		observable.subscribe(observer1);
-		observable.subscribe(observer2);
+		// observers are attached to the observable
+		subject.attach((ConcreteObserver) observer1);
+		subject.attach((ConcreteObserver) observer2);
 
-		/*
-		 * observable changes its state. Theirs subscribers are notified due to internal
-		 * logic of setState method which call the method in charge of the notification
-		 * after the new state value is changed
-		 */
-		observable.setState(1);
+		// subject state changes, theirs observers are notified and updated
+		// automatically
+		((ConcreteSubject) subject).setState(1);
 
-		// observers are unsubscribed from the observable
-		observable.unsubscribe(observer1);
-		observable.unsubscribe(observer2);
+		// check observers state
+		System.out.println(observer1);
+		System.out.println(observer2);
 
-		// observable changes its state again and the subscribers are notified
-		observable.setState(4);
+		// observers are detached from the observable
+		subject.detach((ConcreteObserver) observer1);
+		subject.detach((ConcreteObserver) observer2);
 
-		/*
-		 * Observable abstract class is prepared to bestow all the logic needed for
-		 * creating observables. In case a new one is needed the maintainer must:
-		 * 
-		 * - decide which Object is needed for the state
-		 * 
-		 * - create a new concrete observable making it to inherit Observable abstract
-		 * class and having as argument the state-intended Object above
-		 * 
-		 * - create one concrete observer that implement observable Interface and takes
-		 * as argument the state-intended Object above
-		 */
+		// subject states changes, theirs observers are not notified now
+		((ConcreteSubject) subject).setState(4);
+
+		// check observers state
+		System.out.println(observer1);
+		System.out.println(observer2);
 
 	}
 

@@ -8,6 +8,7 @@ import creational.prototype.prototype.MusicalNotePrototype;
 public class Main {
 
 	public static void main(String[] args) {
+
 		System.out.println("DEEP COPY");
 		// Given a set of musical note prototypes
 		MusicalNotePrototype halfNotePrototypeDeepCopy = new HalfNotePrototypeDeepCopy();

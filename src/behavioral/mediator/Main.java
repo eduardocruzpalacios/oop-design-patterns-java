@@ -2,11 +2,11 @@ package behavioral.mediator;
 
 import java.time.LocalDateTime;
 
-import behavioral.mediator.mediators.ChatRoom;
-import behavioral.mediator.mediators.Mediator;
+import behavioral.mediator.colleagueclass.Participant;
+import behavioral.mediator.concretecolleagueclass.ChatUser;
+import behavioral.mediator.concretemediator.ChatRoom;
+import behavioral.mediator.mediator.Mediator;
 import behavioral.mediator.model.Message;
-import behavioral.mediator.participants.ChatUser;
-import behavioral.mediator.participants.Participant;
 
 public class Main {
 
@@ -31,27 +31,12 @@ public class Main {
 		Message message2 = new Message("Hi all!", user2, LocalDateTime.now());
 		user2.operateOne(message2, user3);
 
-		/*
-		 * an user exits the chat room. The Mediator unlink method is called behind the
-		 * scenes
-		 */
+		// user exits chat room, Mediator unlink method is called behind the scenes
 		user1.disconnect();
 
 		// a message is sent to the 2 left participants in the chat room
 		Message message3 = new Message("Boooo", user3, LocalDateTime.now());
 		user3.operateAll(message3);
-
-		/*
-		 * in case a new concrete participant is needed, the maintainer must:
-		 * 
-		 * - create the class in participants package implementing Participant
-		 * interface. Doing so, current concrete mediator could work with it
-		 * 
-		 * in case a new concrete mediator is needed, the maintainer must:
-		 * 
-		 * - create the class in mediators package implementing Mediator interface.
-		 * Doing so, this could work with current concrete participants
-		 */
 
 	}
 

@@ -25,9 +25,6 @@ public class Main {
 		// call composite operation
 		composite1.render();
 
-		// in case a new leaf is needed, the maintainer must create the class in leaf
-		// package making it to implement abstract methods
-
 	}
 
 }

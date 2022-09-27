@@ -1,7 +1,7 @@
 package behavioral.strategy.context;
 
 import behavioral.strategy.model.Coordinate;
-import behavioral.strategy.strategies.GoStrategy;
+import behavioral.strategy.strategy.GoStrategy;
 
 public class GPS {
 
