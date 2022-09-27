@@ -1,8 +1,8 @@
 package behavioral.templatemethod;
 
-import behavioral.templatemethod.template.BoardGamePlayAlgorithm;
-import behavioral.templatemethod.templated.ArcadiaQuestPlayAlgorithm;
-import behavioral.templatemethod.templated.ParchisPlayAlgorithm;
+import behavioral.templatemethod.abstractclass.BoardGamePlayAlgorithm;
+import behavioral.templatemethod.concreteclass.ArcadiaQuestPlayAlgorithm;
+import behavioral.templatemethod.concreteclass.ParchisPlayAlgorithm;
 
 public class Main {
 
@@ -37,10 +37,11 @@ public class Main {
 
 		/*
 		 * in case a new BoardGamePlayAlgorithm is needed, the maintainer must:
-		 * 
+		 *
 		 * - create the class in the templated package, extending BoardGamePlayAlgorithm
 		 * class and override its abstract methods
 		 */
+
 	}
 
 }

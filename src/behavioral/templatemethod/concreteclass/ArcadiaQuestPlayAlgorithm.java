@@ -1,6 +1,6 @@
-package behavioral.templatemethod.templated;
+package behavioral.templatemethod.concreteclass;
 
-import behavioral.templatemethod.template.BoardGamePlayAlgorithm;
+import behavioral.templatemethod.abstractclass.BoardGamePlayAlgorithm;
 
 public class ArcadiaQuestPlayAlgorithm extends BoardGamePlayAlgorithm {
 

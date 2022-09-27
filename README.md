@@ -259,11 +259,9 @@ Participants:
 #### Template Method
 DEFINITION: Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template method lets subclasses redefine certain steps of an algorithm without changing the algorithms structure.
 
-The algorithm template with the steps defined is in meetUp method of the BoardGamePlayAlgorithm abstract class:
-- Uses methods already implemented in this abstract class.
-- Uses methods implemented in the templated classes (ArcadiaGamePlayAlgorithm and ParchisGamePlayAlgorithm).
-
-The client can refer to the super class and initialize any child class thanks to polymorphism. The client only needs to call the public meetUp method from the instance, which executes the algorithm steps defined in the super class and those steps of the child class initialized.
+Participants:
+- AbstractClass: BoardGamePlayAlgorithm
+- ConcreteClass: ArcadiaQuestPlayAlgorithm, ParchisPlayAlgorithm
 #### Visitor
 DEFINITION: Represent an operation to be performed on the elements of an object structure. Visitor lets you define a new operation without changing the classes of the elements on which it operates.
 
