@@ -244,13 +244,10 @@ Limitations:
 #### State / Objects for States
 DEFINITION: Allows an object to alter its behavior when its internal state changes. The object will appear to change its class.
 
-State interface has init and stop methods.
-
-Concrete states are On and Off and implement methods of their interface.
-
-The context is Car class, has a reference to a State instance, a setter to change it, and methods to call the methods of the State instance.
- 
-There is a state controller that has property and a method for every single concrete state. The properties are the concrete states and the methods receive the context and change its state to a concrete one.
+Participants:
+- Context: Car
+- State: interface State
+- ConcreteState: On, Off
 #### Strategy / Policy
 DEFINITION: Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
 

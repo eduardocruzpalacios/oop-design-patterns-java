@@ -1,32 +1,8 @@
 package behavioral.state.context;
 
-import behavioral.state.states.State;
+import behavioral.state.state.State;
 
 public class Car {
-
-	private String model;
-
-	public Car() {
-	}
-
-	public Car(String model) {
-		this.model = model;
-	}
-
-	public String getModel() {
-		return model;
-	}
-
-	public void setModel(String model) {
-		this.model = model;
-	}
-
-	@Override
-	public String toString() {
-		return "Car [model=" + model + "]";
-	}
-
-	// related to State pattern
 
 	private State state;
 

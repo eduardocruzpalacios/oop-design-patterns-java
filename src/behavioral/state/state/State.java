@@ -1,4 +1,4 @@
-package behavioral.state.states;
+package behavioral.state.state;
 
 public interface State {
 

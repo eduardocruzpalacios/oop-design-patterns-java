@@ -1,4 +1,6 @@
-package behavioral.state.states;
+package behavioral.state.concretestate;
+
+import behavioral.state.state.State;
 
 public class On implements State {
 
