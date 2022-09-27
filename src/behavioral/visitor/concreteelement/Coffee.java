@@ -1,7 +1,7 @@
-package behavioral.visitor.visitableconcrete;
+package behavioral.visitor.concreteelement;
 
-import behavioral.visitor.visitable.Product;
-import behavioral.visitor.visitor.Cashier;
+import behavioral.visitor.element.Product;
+import behavioral.visitor.visitor.Visitor;
 
 public class Coffee implements Product {
 
@@ -28,8 +28,8 @@ public class Coffee implements Product {
 	}
 
 	@Override
-	public float accept(Cashier cashier) {
-		return cashier.visit(this);
+	public float accept(Visitor visitor) {
+		return visitor.visit(this);
 	}
 
 }

@@ -265,12 +265,10 @@ Participants:
 #### Visitor
 DEFINITION: Represent an operation to be performed on the elements of an object structure. Visitor lets you define a new operation without changing the classes of the elements on which it operates.
 
-There are 2 interfaces in this pattern:
-- Cashier that acts as Visitor and must has a method for every single implementation of the other interface. Each method uses each implementation.
-- Product that acts as Visitable and has a method that uses the other interface.
-
-Visitable implementations act as model/representation classes. Its implemented method must call the visitor implementation method and pass the self instance as parameter.
-
-Visitor implementation defines an algorithm for every single representation.
-
-Client uses a data structure of concrete visitables, loop them and uses a concrete visitor to execute the corresponding algorithm to every single representation.
+Participants:
+- Visitor: interface Visitor
+- ConcreteVisitor: CashierVisitor
+- Element: interface Product
+- ConcreteElement: Coffee, Tuna
+- ObjectStructure (Composite participant in Composite pattern): ProductComposite
+- Client: Main
