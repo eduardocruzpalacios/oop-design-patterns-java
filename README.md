@@ -230,9 +230,17 @@ Participants:
 #### Observer / Dependents / Publish-Subscribe
 DEFINITION: Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
 
-Observable abstract class is prepared to bestow all the logic needed for creating concrete observables by inheriting it: subscribe, unsubscribe, change state and notify to observers.
+Variants: *Have state-setting operation on SUbject call Notify after they change the subject's state, neither push nor pull model*.
 
-Observer interface make its implementations to provide a logic for update method.
+Participants:
+- Subject: abstract Subject
+- ConcreteSubject: ConcreteSubject
+- Observer: interface Observer
+- ConcreteObserver: ConcreteObserver
+
+Limitations:
+- Not specifying modifications of interest explicitly.
+- Not encapsulating complex update semantics into a ChangeManager participant.
 #### State / Objects for States
 DEFINITION: Allows an object to alter its behavior when its internal state changes. The object will appear to change its class.
 
