@@ -18,20 +18,6 @@ public class Main {
 		gui.pressControlC();
 		System.out.println("text in clipboard = " + gui.getClipboard());
 
-		/*
-		 * in case a new command is needed, the maintainer must:
-		 *
-		 * - Create the concrete command in command package, make them inherit abstract
-		 * Command class and implement the execute() method. The maintainer might need to
-		 * add new properties along this their getters and setters to make this method
-		 * work
-		 *
-		 * - Create a new instance of the concrete command passing it the receiver
-		 * instance
-		 *
-		 * - Create Gui triggers instances passing them this new concrete command
-		 */
-
 	}
 
 }

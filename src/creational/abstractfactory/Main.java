@@ -35,12 +35,8 @@ public class Main {
 		System.out.println(furnitureFactory2 instanceof OfficeFurnitureFactory);
 		System.out.println(furnitureFactory2 instanceof LivingRoomFurnitureFactory);
 
-		/*
-		 * same logic is applied with concrete objects
-		 *
-		 * a concrete product created by a concrete factory instance is an instance of
-		 * their family product
-		 */
+		// concrete product created by a concrete factory instance is an instance of
+		// their family product
 		Chair chair1 = furnitureFactory1.createChair();
 		System.out.println(
 				"is a Chair instance created by OfficeFurnitureFactory an instance of Chair, OfficeChair & LivingRoomChair?");
@@ -68,16 +64,6 @@ public class Main {
 		System.out.println(table2 instanceof Table);
 		System.out.println(table2 instanceof OfficeTable);
 		System.out.println(table2 instanceof LivingRoomTable);
-
-		/*
-		 * The client creates a concrete factory
-		 *
-		 * As the AbstractFactory has methods to return both Chair and Table products,
-		 * and as concrete factories override concrete products returned (e.g. the
-		 * office factory always creates an office chair), when calling createTable of
-		 * the abstract factory method, it is returned the a concrete product of the
-		 * appropriate product family
-		 */
 
 	}
 
