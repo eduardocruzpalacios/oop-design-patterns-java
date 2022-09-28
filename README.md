@@ -2,15 +2,15 @@
 ## Scope
 The design patterns of this repository refer to those of the **Gang of Four (GoF)**, who are the 4 authors (**Erich Gamma**, **Richard Helm**, **Ralph Johnson**, and **John Vlissides**) of the software engineering book *Design Patterns: Elements of Reusable Object-Oriented Software* first published in 1994.
 
-There is 1 example coded in Java for every single of their 23 design patterns for Object-oriented programming.
+There is at least 1 example coded in Java for every single of their 23 design patterns for Object-oriented programming.
 ## Repository Organization
 Patterns examples are separated by packages.
 
 Classes are divided into packages named accordingly to the GoF's book terminology to facilitate the comprehension of the role each class plays in the corresponding pattern.
 
-There is 1 runnable classes for each pattern: *Main.java*. Comments in it are intended to clarify even more the example as well as explaining how to maintain the code.
+The runnable classes are in the root of each pattern package or inside client.
 
-There is a class called *AnyObject* that is repeated along packages despite DRY (Don't Repeat Yourself) programming principle so as to facilitate the comprehension of a given pattern by the only means of the code belonging to its package. When this class appears, it means it could be substituted by any other class. 
+There are classes with the prefix *Any*, such as *AnyObject* or *AnyString*. When these classes appear, it means they could be substituted by any other class.
 ## Design Patterns
 ### Creational patterns
 #### Abstract factory / Kit
@@ -37,6 +37,8 @@ Participants:
 - ConcreteBuilder: BurgerMenuBurger
 - Director: Cashier (Builder)
 - Product: Order (Item)
+
+Non-pattern participants:
 - Model:
   - abstract Item
     - abstract Burger
@@ -49,8 +51,6 @@ Participants:
       - OnionRings
     - abstract Dessert
       - IceCream
-
-Cashier::construct requests its OrderBuilder member to build the parts of an Order object.
 
 #### Factory method / Virtual Constructor
 DEFINITION: Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory method lets a class defer instantiation to subclasses.
@@ -71,6 +71,8 @@ Parameterized creator variant Participants:
 #### Prototype
 DEFINITION: Specify the kinds of objects to create using a prototypical instance, and create new objects by coping this prototype.
 
+Variants: *Deep copy* and *Shadow copy* clone techniques.
+
 Participants:
 - Client:
   - Graphic::getRepresentation
@@ -79,21 +81,19 @@ Participants:
 - ConcretePrototype:
   - HalfNotePrototypeDeepCopy
   - HalfNotePrototypeShadowCopy
+
+Non-pattern participants:
 - Model: Representation
-
-ConcretePrototype classes expose clone method to create a new object of their class by cloning a prototypical instance.
-
-Variants: *Deep copy* and *Shadow copy* clone techniques.
-
 #### Singleton
 DEFINITION: Ensure a class only has one instance, and provide a global point of access to it.
 
-Participants:
-- Singleton: EarlySingleton (AnyObject), LazySingleton (AnyObject)
-- Model: AnyObject
-
 Variants: *Early instantiation* and *Lazy instantiation*.
 
+Participants:
+- Singleton: EarlySingleton (AnyObject), LazySingleton (AnyObject)
+
+Non-pattern participants:
+- Model: AnyObject
 ### Structural patterns
 #### Adapter / Wrapper
 DEFINITION: Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interface.
@@ -114,7 +114,8 @@ Participants:
 - Implementor: Door
 - ConcreteImplementor: FrontDoor, InnerDoor
 
-DataForm in View package is a class to encapsulate the data requests to users.
+Non-pattern participants:
+- View: DataForm
 #### Composite
 DEFINITION: Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
 
@@ -162,7 +163,9 @@ Variants: *Virtual proxy*.
 Participants of virtual proxy variant:
 - RealSubject: Webpage implements WebpageService
 - Proxy: WebpageProxy implements WebpageService
-- Subject: WebpageService
+- Subject: WebpageService(HtmlDocument)
+
+Non-pattern participants:
 - Model: HtmlDocument
 
 ### Behavioral patterns
@@ -172,9 +175,10 @@ DEFINITION: Avoid coupling the sender of a request to its receiver by giving mor
 Participants:
 - Handler: abstract HtmlElement (AnyRequest)
 - ConcreteHandler: DivHtmlElement, ButtonHtmlElement
-- Model: AnyRequest
 - Client: Main
 
+Non-pattern participants:
+- Model: AnyRequest
 #### Command / Action / Transaction
 DEFINITION: Encapsulate a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.
 
@@ -196,7 +200,7 @@ Participants:
 - Client: LiteralExpressionTest, AlternationExpressionTest, RepetitionExpressionTest, SequenceExpressionTest
 
 Limitations:
-- Parser not included to create an Abstract Syntax Tree.
+- Parser to create an Abstract Syntax Tree (AST) not included.
 - Visitor pattern is not used to implement interpret operations.
 - Terminal symbols are not shared by means of the Flyweight pattern.
 #### Iterator / Cursor
@@ -215,10 +219,12 @@ Participants of external non-robust polymorphic iterator variant:
 DEFINITION: Define an object that encapsulate how a set of objects interact. Mediator promotes loose couping by keeping objects from referring to each other explicitly, and it lets you vary their interaction independently.
 
 Participants:
-- Mediator: interface mediator
+- Mediator: interface mediator (Message)
 - ConcreteMediator: ChatRoom
-- ColleagueClass: interface Participant
-- ConcreteColleagueClass: CharUser
+- ColleagueClass: interface Participant (Message)
+- ConcreteColleagueClass: ChatUser
+
+Non-pattern participants:
 - Model: Message
 #### Memento / Token
 DEFINITION: Without violating encapsulation, capture and externalize an object's internal state so that the object can be restored to this state later.
@@ -230,7 +236,7 @@ Participants:
 #### Observer / Dependents / Publish-Subscribe
 DEFINITION: Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
 
-Variants: *Have state-setting operation on SUbject call Notify after they change the subject's state, neither push nor pull model*.
+Variants: *Have state-setting operation on Subject call Notify after they change the subject's state, neither push nor pull model*.
 
 Participants:
 - Subject: abstract Subject
@@ -252,9 +258,11 @@ Participants:
 DEFINITION: Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
 
 Participants:
-- Context: GPS
-- Strategy: interface GoStrategy
+- Context: GPS (Coordinate)
+- Strategy: interface GoStrategy (Coordinate)
 - ConcreteStrategy: ByCar, ByWalk
+
+Non-pattern participants:
 - Model: Coordinate
 #### Template Method
 DEFINITION: Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template method lets subclasses redefine certain steps of an algorithm without changing the algorithms structure.

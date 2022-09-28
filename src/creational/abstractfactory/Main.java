@@ -16,16 +16,13 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		// instantiation by means of the concrete factory singleton
 		FurnitureFactory furnitureFactory1 = LivingRoomFurnitureFactorySingleton.getInstance();
 		FurnitureFactory furnitureFactory2 = OfficeFurnitureFactorySingleton.getInstance();
 
-		// each concrete factory is an instance of their superclass
 		System.out.println("are concrete factories instances of their superclass?");
 		System.out.println(furnitureFactory1 instanceof FurnitureFactory);
 		System.out.println(furnitureFactory2 instanceof FurnitureFactory);
 
-		// each instance refers to the concrete factory returned
 		System.out.println(
 				"is OfficeFurnitureFactory an instance of OfficeFurnitureFactory & LivingRoomFurnitureFactory");
 		System.out.println(furnitureFactory1 instanceof OfficeFurnitureFactory);
@@ -35,8 +32,6 @@ public class Main {
 		System.out.println(furnitureFactory2 instanceof OfficeFurnitureFactory);
 		System.out.println(furnitureFactory2 instanceof LivingRoomFurnitureFactory);
 
-		// concrete product created by a concrete factory instance is an instance of
-		// their family product
 		Chair chair1 = furnitureFactory1.createChair();
 		System.out.println(
 				"is a Chair instance created by OfficeFurnitureFactory an instance of Chair, OfficeChair & LivingRoomChair?");

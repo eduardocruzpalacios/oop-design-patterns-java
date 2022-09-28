@@ -9,10 +9,11 @@ public class Main {
 
 	public static void main(String[] args) {
 
+		// chain
 		HtmlElement button = new ButtonHtmlElement(null);
-
 		HtmlElement div = new DivHtmlElement(button);
 
+		// handle request
 		AnyRequest anyRequest = new AnyRequest();
 
 		div.handleRequest(anyRequest);
