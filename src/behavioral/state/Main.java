@@ -9,10 +9,10 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		// initialize context
+		// Context
 		Car car = new Car();
 
-		// initialize, set and use concrete states
+		// instantiate, set and use State
 		State state = new Off();
 
 		car.setState(state);
