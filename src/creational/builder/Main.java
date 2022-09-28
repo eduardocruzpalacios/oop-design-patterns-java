@@ -12,10 +12,10 @@ public class Main {
 		// client initializes a concrete builder
 		OrderBuilder orderBuilder = new BurgerMenuBuilder();
 
-		// the director receives the builder
+		// director receives builder
 		Cashier cashier = new Cashier(orderBuilder);
 
-		// the director constructs the product
+		// director constructs product
 		String main = "cheese burger";
 		String drink = "coke";
 		String companion = "onion rings";
@@ -23,7 +23,7 @@ public class Main {
 
 		Order order = cashier.construct(main, drink, companion, dessert);
 
-		// the client can use the product
+		// client can use product
 		order.printOrder();
 		order.printCost();
 
