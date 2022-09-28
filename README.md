@@ -8,7 +8,7 @@ Patterns examples are separated by packages.
 
 Classes are divided into packages named accordingly to the GoF's book terminology to facilitate the comprehension of the role each class plays in the corresponding pattern.
 
-The runnable classes are in the root of each pattern package or inside client.
+The runnable classes are in the root of each pattern package or inside client package.
 
 There are classes with the prefix *Any*, such as *AnyObject* or *AnyString*. When these classes appear, it means they could be substituted by any other class.
 ## Design Patterns
